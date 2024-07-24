@@ -3,7 +3,6 @@
     ./modules/display.nix
     ./modules/network.nix
     ./modules/audio.nix
-	./modules/font.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

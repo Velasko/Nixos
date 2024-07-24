@@ -1,7 +1,7 @@
 { pkgs, ... } : {
 
 	fonts.packages = with pkgs; [
-		nerdfonts
+		(nerdfonts.override { fonts = [ "Inconsolata" ]; })
 	];
 	fonts.fontDir.enable = true;
 
