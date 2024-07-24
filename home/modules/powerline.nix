@@ -7,7 +7,9 @@ let
 
   pathFG = config.lib.stylix.colors.base0C;
   gitFG = config.lib.stylix.colors.base0B;
+  gitStatusFG = config.lib.stylix.colors.base08;
   langFG = config.lib.stylix.colors.base09;
+  jobsFG = config.lib.stylix.colors.base0A;
   timeFG = config.lib.stylix.colors.base0D;
 
   separator = "[](bold fg:#${config.lib.stylix.colors.base03} bg:#${barBG})";
@@ -23,8 +25,9 @@ in {
       "[](fg:#${userBG} bg:#${barBG})"
       "$directory"
       "$git_branch$git_status"
-      "$c$golang$rust$python"
-      "$docker_context"
+      "$c$golang$rust$python$helm"
+      "$docker_context$kubernetes"
+      "$jobs"
       "$time"
       "[▓▒░ ](fg:#${userBG})\n"
       "[╰─ ](fg:#${userBG})"
@@ -45,14 +48,14 @@ in {
 
     username = {
       show_always = true;
-      style_user = "bg:#${userBG}";
-      format = "[$user ](bold $style)";
+      style_user = "bold bg:#${userBG}";
+      format = "[$user ]($style)";
       disabled = false;
     };
 
     directory = {
-      style = "bg:#${barBG} fg:#${pathFG}";
-    	format = "[ $path ](bold $style)";
+      style = "bold bg:#${barBG} fg:#${pathFG}";
+    	format = "[ $path ]($style)";
     	truncation_length = 3;
     	# truncation_symbol = "…/";
     	substitutions = {
@@ -69,34 +72,53 @@ in {
     };
 
     git_branch = {
-      style = "fg:#${gitFG} bg:#${barBG}";
+      style = "bold fg:#${gitFG} bg:#${barBG}";
       symbol = "";
-      format = "${separator}[ $symbol $branch ](bold $style)";
+      format = "${separator}[ $symbol $branch]($style)";
     };
 
+    git_status = {
+        ahead = "⇡\${count}";
+        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+        behind = "⇣\${count}";
+        up_to_date = "✓ ";
+        style = "bold fg:#${gitStatusFG} bg:#${barBG}";
+        format = "[ $all_status$ahead_behind ]($style)";
+	};
+
     rust = {
-      symbol = " ";
+      symbol = "󱘗";
       style = language_style;
       format = language_format;
     };
 
     c = {
-    	symbol = " ";
+      symbol = "";
       style = language_style;
       format = language_format;
     };
 
     golang = {
-      symbol = " ";
+      symbol = "󰟓 ";
       style = language_style;
       format = language_format;
     };
 
     python = {
-      symbol = " ";
+      symbol = "󰌠";
       style = language_style;
       format = language_format;
     };
+
+	helm = {
+      style = language_style;
+      format = language_format;
+	};
+
+    jobs = {
+      style = "bold fg:#${jobsFG} bg:#${barBG}";
+      format = "${separator}[$symbol$number]($style) ";
+	};
 
     time = {
       disabled = false;
