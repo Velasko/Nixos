@@ -18,8 +18,9 @@ in {
   home.stateVersion = "24.05";
   home.username = "${username}";
 
-  programs.btop.enable = true;
+  fonts.fontconfig.enable = true;
 
+  programs.btop.enable = true;
   programs.alacritty.enable = true;
   home.packages = with pkgs; [
 		autojump
@@ -38,6 +39,7 @@ in {
 		tree
 #		vesktop
 		wget
+		inconsolata-nerdfont
   ];
 
   home.sessionVariables = {
