@@ -26,8 +26,12 @@ in {
 		direnv
 #		discord
 		firefox
+		gcc
+		lazygit
 		micro
 		neovim
+		python3
+		rustup
 #		spotify
 #		telegram
 		tmux
