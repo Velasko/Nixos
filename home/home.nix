@@ -1,4 +1,11 @@
-{ username, pkgs, ... } : {
+{ username, pkgs, config, ... } :
+let
+  dotfiles = builtins.fetchGit {
+    url = "https://github.com/Velasko/dotfiles";
+    rev = "4f55b5c58bd7f635dc4c5864740c3fa770725c33";
+    ref = "nixos";
+  };
+in {
   imports = [
     ./modules/gitconfig.nix
     ./modules/shell.nix
@@ -12,9 +19,9 @@
   home.username = "${username}";
 
   programs.btop.enable = true;
+
   programs.alacritty.enable = true;
   home.packages = with pkgs; [
-    # alacritty
 		autojump
 		direnv
 #		discord
@@ -22,18 +29,23 @@
 		micro
 		neovim
 #		spotify
-		stow
 #		telegram
 		tmux
 		tree
 #		vesktop
 		wget
-#		zoxide
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
     ZSH_TMUX_AUTOSTART = "true";
+  };
+
+  home.file = {
+    ".tmux.conf".source = "${dotfiles}/.tmux.conf";
+    ".tmux".source = "${dotfiles}/.tmux/";
+    ".config/micro".source = "${dotfiles}/.config/micro/";
+    ".config/nvim".source = "${dotfiles}/.config/nvim/";
   };
 
   programs.home-manager.enable = true;
