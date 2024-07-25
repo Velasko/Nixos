@@ -1,16 +1,16 @@
 { pkgs, config, lib, ... } :
 let
-  userFG = config.lib.stylix.colors.base07;
+  termBG = config.lib.stylix.colors.base00;
   userBG = config.lib.stylix.colors.base03;
-
   barBG = config.lib.stylix.colors.base02;
 
+  userFG = config.lib.stylix.colors.base0B;
   pathFG = config.lib.stylix.colors.base0C;
   gitFG = config.lib.stylix.colors.base0B;
   gitStatusFG = config.lib.stylix.colors.base08;
   langFG = config.lib.stylix.colors.base09;
   jobsFG = config.lib.stylix.colors.base0A;
-  timeFG = config.lib.stylix.colors.base0D;
+  timeFG = config.lib.stylix.colors.base0B;
 
   separator = "[](bold fg:#${config.lib.stylix.colors.base03} bg:#${barBG})";
   language_style = "bold bg:#${barBG} fg:#${langFG}";
@@ -28,8 +28,10 @@ in {
       "$c$golang$rust$python$helm"
       "$docker_context$kubernetes"
       "$jobs"
+      "[▓▒░ ](fg:#${barBG})"
+      "$fill"
       "$time"
-      "[▓▒░ ](fg:#${userBG})\n"
+      "[ ](fg:#${userBG} bg:#${termBG})\n"
       "[╰─ ](fg:#${userBG})"
     ];
 
@@ -43,12 +45,12 @@ in {
     os = {
       disabled = false;
       symbols.NixOS = "  ";
-      style = "bg:#${userBG}";
+      style = "fg:#${userFG} bg:#${userBG}";
     };
 
     username = {
       show_always = true;
-      style_user = "bold bg:#${userBG}";
+      style_user = "bold fg:#${userFG} bg:#${userBG}";
       format = "[$user ]($style)";
       disabled = false;
     };
@@ -84,7 +86,7 @@ in {
         up_to_date = "✓ ";
         style = "bold fg:#${gitStatusFG} bg:#${barBG}";
         format = "[ $all_status$ahead_behind ]($style)";
-	};
+    };
 
     rust = {
       symbol = "󱘗";
@@ -110,20 +112,21 @@ in {
       format = language_format;
     };
 
-	helm = {
+    helm = {
       style = language_style;
       format = language_format;
-	};
+    };
 
     jobs = {
-      style = "bold fg:#${jobsFG} bg:#${barBG}";
-      format = "${separator}[$symbol$number]($style) ";
-	};
+      symbol = "✦";
+      style = "fg:#${jobsFG} bg:#${barBG}";
+      format = "${separator}[ $symbol $number ]($style)";
+    };
 
     time = {
       disabled = false;
       time_format = "%R"; # Hour:Minute Format
-      format = "[](bold fg:#${barBG} bg:#${userBG})[  $time ](bold fg:#${timeFG} bg:#${userBG})";
+      format = "[](bold fg:#${termBG} bg:#${userBG})[  $time ](bold fg:#${timeFG} bg:#${userBG})";
     };
 
   };
