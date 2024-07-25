@@ -7,6 +7,10 @@
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		xremap.url = "github:xremap/nix-flake";
 		stylix.url = "github:danth/stylix";
+		dotfiles = {
+		  flake = false;
+          url = "github:velasko/dotfiles/nixos";
+        };
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
@@ -16,12 +20,6 @@
 		hostname = "nixos";
 		username = "velasco";
 	in {
-		devShells."${system}".default = pkgs.mkShell {
-			nativeBuildInputs = with pkgs; [
-				libgcc
-			];
-    };
-
 		nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
 			specialArgs = { inherit inputs; inherit username; inherit hostname; };
 			inherit system;

@@ -154,6 +154,23 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721849696,
+        "narHash": "sha256-Civqcw9lV1hL9w/nsMqprhX2O4vLm3uarJO+BZOFGMY=",
+        "owner": "velasko",
+        "repo": "dotfiles",
+        "rev": "5f5f1c036183738e7fa6a594545e10c8262a0aa6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "velasko",
+        "ref": "nixos",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -596,6 +613,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix",

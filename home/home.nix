@@ -1,11 +1,4 @@
-{ username, pkgs, config, ... } :
-let
-  dotfiles = builtins.fetchGit {
-    url = "https://github.com/Velasko/dotfiles";
-    rev = "4f55b5c58bd7f635dc4c5864740c3fa770725c33";
-    ref = "nixos";
-  };
-in {
+{ username, pkgs, config, inputs, ... } : {
   imports = [
     ./modules/gitconfig.nix
     ./modules/shell.nix
@@ -48,10 +41,10 @@ in {
   };
 
   home.file = {
-    ".tmux.conf".source = "${dotfiles}/.tmux.conf";
-    ".tmux".source = "${dotfiles}/.tmux/";
-    ".config/micro".source = "${dotfiles}/.config/micro/";
-    ".config/nvim".source = "${dotfiles}/.config/nvim/";
+    ".tmux.conf".source = "${inputs.dotfiles}/.tmux.conf";
+    ".tmux".source = "${inputs.dotfiles}/.tmux/";
+    ".config/micro".source = "${inputs.dotfiles}/.config/micro/";
+    ".config/nvim".source = "${inputs.dotfiles}/.config/nvim/";
   };
 
   programs.home-manager.enable = true;
