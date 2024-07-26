@@ -35,14 +35,23 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
-      	"git"
       	"autojump"
+		"command-not-found"
+      	"direnv"
+		"fluxcd"
+      	"fzf"
+		"git"
       	"rust"
       	"tmux"
+		"themes"
       	"web-search"
-      	"direnv"
       ];
     };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.zoxide.enable = true;
