@@ -1,4 +1,4 @@
-{ username, pkgs, config, inputs, ... } : {
+{ username, pkgs, config, ... } : {
   imports = [
     ./modules/gitconfig.nix
     ./modules/shell.nix

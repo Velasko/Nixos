@@ -1,4 +1,4 @@
-{ config, pkgs, ... } : {
+{ config, pkgs, inputs, ... } : {
   programs.alacritty.enable = true;
 
   home.packages = with pkgs; [
