@@ -3,6 +3,7 @@
     ./modules/gitconfig.nix
     ./modules/shell.nix
     ./modules/stylix.nix
+	./modules/programming.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -16,22 +17,12 @@
   programs.btop.enable = true;
   programs.alacritty.enable = true;
   home.packages = with pkgs; [
-		autojump
-		direnv
 #		discord
 		firefox
-		gcc
-		lazygit
-		micro
-		neovim
-		python3
-		rustup
 #		spotify
 #		telegram
-		tmux
-		tree
 #		vesktop
-		wget
+
 		inconsolata-nerdfont
   ];
 
