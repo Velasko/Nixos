@@ -15,7 +15,6 @@
   fonts.fontconfig.enable = true;
 
   programs.btop.enable = true;
-  programs.alacritty.enable = true;
   home.packages = with pkgs; [
 #		discord
 		firefox
@@ -25,18 +24,6 @@
 
 		inconsolata-nerdfont
   ];
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    ZSH_TMUX_AUTOSTART = "true";
-  };
-
-  home.file = {
-    ".tmux.conf".source = "${inputs.dotfiles}/.tmux.conf";
-    ".tmux".source = "${inputs.dotfiles}/.tmux/";
-    ".config/micro".source = "${inputs.dotfiles}/.config/micro/";
-    ".config/nvim".source = "${inputs.dotfiles}/.config/nvim/";
-  };
 
   programs.home-manager.enable = true;
 }
