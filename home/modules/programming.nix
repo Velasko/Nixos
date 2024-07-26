@@ -1,4 +1,8 @@
-{ config, pkgs, inputs, ... } : {
+{ config, pkgs, inputs, ... } :
+let
+	python = pkgs.python312;
+	pythonPkgs = pkgs.python312Packages;
+in {
   programs.alacritty.enable = true;
 
   home.packages = with pkgs; [
@@ -12,11 +16,18 @@
 		tree
 		wget
 
+# Lua
+		lua-language-server
+
 # Python
-		python3
+		python
+		pythonPkgs.jedi-language-server
+		ruff
 
 # Rust appls
+		bacon
 		cargo
+		clippy
 		# rustup
 		rust-analyzer
 
