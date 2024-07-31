@@ -16,13 +16,16 @@
 
   programs.btop.enable = true;
   home.packages = with pkgs; [
-#		discord
+		# bitwarden-desktop
+		# bitwardena-cli
+		# discord
 		firefox
-#		spotify
-#		telegram
-#		vesktop
+		# spotify
+		# telegram
+		# vesktop
 
 		inconsolata-nerdfont
+		libsecret
   ];
 
   programs.home-manager.enable = true;
