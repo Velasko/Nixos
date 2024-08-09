@@ -7,21 +7,32 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+	boot.loader = {
+		grub. = {
+			enable = true;
+			device = "/dev/vda";
+			useOSProber = true;
+			configurationLimit = 10;
+		};
 
-#  boot.loader.systemd-boot.enable = true;
-#  boot.loader.efi.canTouchEfiVariables = true;
+		systemd-boot = {
+			enable = false;
+			configurationLimit = 10;
+		};
 
-	boot.binfmt.registrations.appimage = {
-		wrapInterpreterInShell = false;
-		interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-		recognitionType = "magic";
-		offset = 0;
-		mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-		magicOrExtension = ''\x7fELF....AI\x02'';
+		# efi.canTouachEfiVariables = true;
+		
+		binfmt.registrations.appimage = {
+			wrapInterpreterInShell = false;
+			interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+			recognitionType = "magic";
+			offset = 0;
+			mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+			magicOrExtension = ''\x7fELF....AI\x02'';
+		};
 	};
+
+
 
   powerManagement.cpuFreqGovernor = "performance";
   powerManagement.cpufreq.min = 41000;
