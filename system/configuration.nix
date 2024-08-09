@@ -1,11 +1,14 @@
 { pkgs, username, ... } : {
-  imports = [
-    ./modules/display.nix
-    ./modules/network.nix
-    ./modules/audio.nix
-  ];
+	imports = [
+		./modules/display.nix
+		./modules/network.nix
+		./modules/audio.nix
+	];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+	nix = {
+		settings.experimental-features = [ "nix-command" "flakes" ];
+		optimise.automatic = true;
+	};
 
 	boot.loader = {
 		grub. = {
@@ -32,56 +35,54 @@
 		};
 	};
 
+	powerManagement.cpuFreqGovernor = "performance";
+	powerManagement.cpufreq.min = 41000;
 
+	time.timeZone = "America/Sao_Paulo";
 
-  powerManagement.cpuFreqGovernor = "performance";
-  powerManagement.cpufreq.min = 41000;
+	i18n.defaultLocale = "en_US.UTF-8";
+	i18n.extraLocaleSettings = {
+		LC_IDENTIFICATION = "pt_BR.UTF-8";
+		LC_MEASUREMENT = "pt_BR.UTF-8";
+		LC_TELEPHONE = "pt_BR.UTF-8";
+		LC_MONETARY = "pt_BR.UTF-8";
+		LC_ADDRESS = "pt_BR.UTF-8";
+		LC_NUMERIC = "pt_BR.UTF-8";
+		LC_PAPER = "pt_BR.UTF-8";
+		LC_NAME = "pt_BR.UTF-8";
+		LC_TIME = "pt_BR.UTF-8";
+	};
 
-  time.timeZone = "America/Sao_Paulo";
+	# Configure console keymap
+	console.keyMap = "br-abnt2";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
-  };
+	programs.nh = {
+		enable = true;
+		clean.enable = true;
+		clean.extraArgs = "--keep-since 1d --keep 3";
+	};
 
-  # Configure console keymap
-  console.keyMap = "br-abnt2";
+	programs = {
+		zsh.enable = true;
+		nix-ld.enable = true;
+	};
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 1d --keep 3";
-  };
-
-  programs = {
-    zsh.enable = true;
-    nix-ld.enable = true;
-  };
-
-  users.users."${username}"= {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
+	users.users."${username}"= {
+		shell = pkgs.zsh;
+		isNormalUser = true;
+		description = "${username}";
+		extraGroups = [ "networkmanager" "wheel" ];
+	};
 
 	hardware.uinput.enable = true;
-  users.groups.uinput.members = ["${username}"];
+	users.groups.uinput.members = ["${username}"];
 	users.groups.input.members = ["${username}"];
 
-  nixpkgs.config.allowUnfree = true;
+	nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-  ];
+	environment.systemPackages = with pkgs; [
+		git
+	];
 
-  system.stateVersion = "24.05";
+	system.stateVersion = "24.05";
 }
