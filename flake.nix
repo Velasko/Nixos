@@ -34,7 +34,7 @@
 			inherit pkgs;
 			modules = [
 			  stylix.homeManagerModules.stylix
-			  ./home/home.nix
+			  ./home/base.nix
 			];
 		};
 	};

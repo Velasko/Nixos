@@ -52,7 +52,7 @@
 
   programs = {
     zsh.enable = true;
-    steam.enable = true;
+    nix-ld.enable = true;
   };
 
   users.users."${username}"= {

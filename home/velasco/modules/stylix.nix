@@ -3,7 +3,7 @@
   stylix.cursor.package = pkgs.apple-cursor;
   stylix.cursor.name = "macOS-BigSur-White";
 
-  stylix.image = ../../home/wallpaper.png;
+  stylix.image = ../../home/${username}/wallpaper.png;
   stylix.polarity = "dark";
   stylix.enable = true;
 }
