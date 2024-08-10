@@ -10,5 +10,10 @@
 	home.username = "${username}";
 
 	fonts.fontconfig.enable = true;
+	home.packages = with pkgs; [
+		inconsolata-nerdfont
+		libsecret
+	];
+
 	programs.home-manager.enable = true;
 }
