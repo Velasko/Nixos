@@ -15,27 +15,36 @@
 
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
 	let
+		inherit (nixpkgs.lib.lists) foldl forEach;
 		pkgs = nixpkgs.legacyPackages.${system};
 		system = "x86_64-linux";
-		hostname = "nixos";
+		machines = ["nixos" "work"];
 		username = "velasco";
 	in {
-		nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
-			specialArgs = { inherit inputs; inherit username; inherit hostname; };
-			inherit system;
-			modules = [
-				./system/hardware-configuration.nix
-				./system/configuration.nix
-			];
-		};
+		nixosConfigurations = foldl (a: b: a // b) { } (
+			forEach machines (hostname: {
+				"${hostname}" = nixpkgs.lib.nixosSystem {
+					specialArgs = { inherit inputs; inherit username; inherit hostname; };
+					inherit system;
+					modules = [
+						./system/hardware-configuration.nix
+						./system/configuration.nix
+					];
+				};
+			})
+		);
 
-		homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-			extraSpecialArgs = { inherit inputs; inherit username; inherit hostname; };
-			inherit pkgs;
-			modules = [
-			  stylix.homeManagerModules.stylix
-			  ./home/base.nix
-			];
-		};
+		homeConfigurations = foldl (a: b: a // b) { } (
+			forEach machines (hostname: {
+				"${hostname}" = home-manager.lib.homeManagerConfiguration {
+					extraSpecialArgs = { inherit inputs; inherit username; inherit hostname; };
+					inherit pkgs;
+					modules = [
+						stylix.homeManagerModules.stylix
+						./home/base.nix
+					];
+				};
+			})
+		);
 	};
 }
