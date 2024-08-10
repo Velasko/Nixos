@@ -14,9 +14,8 @@
   boot.extraModulePackages = [ ];
   boot.loader = {
     grub.enable = true;
-    systemd-boot.enable = true;
+    systemd-boot.enable = false;
   };
-
 
   boot.loader.grub = {
 	device = "/dev/vda";
