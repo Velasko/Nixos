@@ -34,8 +34,8 @@
 			})
 		);
 
-		homeConfigurations = foldl (a: b: a // b) { } (
-			forEach machines (hostname: {
+		homeConfigurations = let
+			configure = hostname: {
 				"${hostname}" = home-manager.lib.homeManagerConfiguration {
 					extraSpecialArgs = { inherit inputs; inherit username; inherit hostname; };
 					inherit pkgs;
@@ -44,7 +44,11 @@
 						./home/base.nix
 					];
 				};
-			})
+			};
+		in foldl (a: b: a // b) {
+			"${username}" = (configure "nixos")."nixos";
+		} (
+			forEach machines configure
 		);
 	};
 }
