@@ -12,17 +12,8 @@
 
 	boot = {
 		loader = {
-			grub = {
-				enable = true;
-				device = "/dev/vda";
-				useOSProber = true;
-				configurationLimit = 10;
-			};
-
-			systemd-boot = {
-				enable = false;
-				configurationLimit = 10;
-			};
+			grub.configurationLimit = 10;
+			systemd-boot.configurationLimit = 10;
 		};
 
 		# efi.canTouachEfiVariables = true;

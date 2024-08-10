@@ -12,6 +12,17 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.loader = {
+    grub.enable = true;
+    systemd-boot.enable = true;
+  };
+
+
+  boot.loader.grub = {
+	device = "/dev/vda";
+	useOSProber = true;
+  };
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/8b492912-b6bd-4b23-9053-a5c96f224c04";
