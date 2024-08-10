@@ -25,6 +25,7 @@
       ls = "${pkgs.eza}/bin/eza";
       system = "FLAKE=~/.nixos nh os";
       home = "FLAKE=~/.nixos nh home";
+      nix-clean = "nix-store --gc && nix-collect-garbage --delete old";
      };
 
     history = {
