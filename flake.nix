@@ -20,9 +20,10 @@
 		system = "x86_64-linux";
 		machines = ["nixos" "work"];
 		username = "velasco";
+		default_hostname = builtins.elemAt machines 0;
 	in {
 		nixosConfigurations = foldl (a: b: a // b) { } (
-			forEach machines (hostname: {
+			forEach machines (hostname: {	
 				"${hostname}" = nixpkgs.lib.nixosSystem {
 					specialArgs = { inherit inputs; inherit username; inherit hostname; };
 					inherit system;
@@ -46,7 +47,7 @@
 				};
 			};
 		in foldl (a: b: a // b) {
-			"${username}" = (configure "nixos")."nixos";
+			"${username}" = (configure default_hostname)."${default_hostname}";
 		} (
 			forEach machines configure
 		);
