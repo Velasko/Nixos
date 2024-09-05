@@ -1,5 +1,5 @@
 { pkgs, config, lib, ... } : {
-  imports = [ ./powerline.nix ];
+	# imports = [ ./powerline.nix ];
 
   programs.alacritty = {
     enable = true;

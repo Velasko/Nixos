@@ -2,7 +2,7 @@
 	imports = [
 		./modules/gitconfig.nix
 		./modules/shell.nix
-		./modules/stylix.nix
+		# ./modules/stylix.nix
 		./modules/programming.nix
 		./systems/${hostname}.nix
 	];

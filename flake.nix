@@ -41,7 +41,6 @@
 					extraSpecialArgs = { inherit inputs; inherit username; inherit hostname; };
 					inherit pkgs;
 					modules = [
-						stylix.homeManagerModules.stylix
 						./home/base.nix
 					];
 				};
