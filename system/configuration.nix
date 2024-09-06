@@ -1,4 +1,4 @@
-{ pkgs, username, inputs, ... } : {
+{ pkgs, username, inputs, config, ... } : {
 	imports = [
 		./modules/display.nix
 		./modules/network.nix
@@ -12,12 +12,12 @@
 		optimise.automatic = true;
 	};
 
-	disko.devices.disk.main.device = "/dev/vda";
+	# disko.devices.disk.main.device = "/dev/vda";
 
 	boot = {
 		loader = {
 			grub = {
-				enable = true;
+				enable = !config.boot.loader.systemd-boot.enable;
 				device = "/dev/vda";
 				useOSProber = true;
 				configurationLimit = 10;
@@ -27,9 +27,10 @@
 				enable = false;
 				configurationLimit = 10;
 			};
+
+			efi.canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
 		};	
 
-		# efi.canTouachEfiVariables = true;
 		
 		binfmt.registrations.appimage = {
 			wrapInterpreterInShell = false;
