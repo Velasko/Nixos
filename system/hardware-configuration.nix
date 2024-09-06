@@ -13,10 +13,10 @@
 	boot.kernelModules = [ "kvm-amd" ];
 	boot.extraModulePackages = [ ];
 
-	# fileSystems."/" = {
-	# 	device = "/dev/disk/by-uuid/8b492912-b6bd-4b23-9053-a5c96f224c04";
-	# 	fsType = "ext4";
-	# };
+	fileSystems."/" = {
+		device = "local/root";
+		fsType = "zfs";
+	};
 
 	swapDevices = [ ];
 
