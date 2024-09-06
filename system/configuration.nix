@@ -12,7 +12,6 @@
 		optimise.automatic = true;
 	};
 
-	disko.devices.disk.main.device = "/dev/vda";
 	disko.enableConfig = true;
 
 	boot = {
@@ -38,7 +37,7 @@
 			};
 
 			efi = {
-				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+				# canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
 				efiSysMountPoint = "/boot/efi";
 			};
 		};	
