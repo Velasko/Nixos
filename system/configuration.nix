@@ -23,7 +23,7 @@
 				configurationLimit = 10;
 				efiSupport = true;
 				zfsSupport = true;
-				efiInstallAsRemovable = true;
+				# efiInstallAsRemovable = true;
 				mirroredBoots = [
 					{ devices = [ "nodev" ]; path = "/boot"; }
 				];
