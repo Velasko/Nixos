@@ -13,9 +13,12 @@
 	};
 
 	disko.devices.disk.main.device = "/dev/vda";
-	disko.enableConfig = false;
+	disko.enableConfig = true;
 
 	boot = {
+		supportedFilesystems = [ "zfs" ];
+		zfs.forceImportRoot = true;
+
 		loader = {
 			grub = {
 				enable = !config.boot.loader.systemd-boot.enable;
@@ -23,7 +26,7 @@
 				configurationLimit = 10;
 				efiSupport = true;
 				zfsSupport = true;
-				# efiInstallAsRemovable = true;
+				efiInstallAsRemovable = true;
 				mirroredBoots = [
 					{ devices = [ "nodev" ]; path = "/boot"; }
 				];
@@ -34,10 +37,10 @@
 				configurationLimit = 10;
 			};
 
-			efi = {
-				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
-				efiSysMountPoint = "/boot/efi";
-			};
+			# efi = {
+			# 	canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+			# 	efiSysMountPoint = "/boot/efi";
+			# };
 		};	
 
 		
