@@ -16,7 +16,10 @@
 
 	boot = {
 		supportedFilesystems = [ "zfs" ];
-		zfs.forceImportRoot = true;
+		zfs = {
+			forceImportRoot = true;
+			extraPools = [ "local" ];
+		};
 
 		loader = {
 			grub = {
