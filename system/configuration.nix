@@ -24,6 +24,9 @@
 				efiSupport = true;
 				zfsSupport = true;
 				efiInstallAsRemovable = true;
+				mirroredBoots = [
+					{ devices = [ "nodev" ]; path = "/boot"; };
+				];
 			};
 
 			systemd-boot = {
