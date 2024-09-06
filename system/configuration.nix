@@ -24,7 +24,7 @@
 				efiSupport = true;
 				zfsSupport = true;
 				efiInstallAsRemovable = true;
-				devices = "nodev";
+				devices = "/dev/sda";
 			};
 
 			systemd-boot = {
