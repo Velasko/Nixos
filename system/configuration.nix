@@ -23,9 +23,7 @@
 				enable = false;
 				configurationLimit = 10;
 			};
-		};
-
-		
+		};	
 
 		# efi.canTouachEfiVariables = true;
 		
