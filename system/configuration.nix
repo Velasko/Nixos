@@ -1,14 +1,18 @@
-{ pkgs, username, ... } : {
+{ pkgs, username, inputs, ... } : {
 	imports = [
 		./modules/display.nix
 		./modules/network.nix
 		./modules/audio.nix
+		inputs.disko.nixosModules.disko
+		./disko/disko-config.nix
 	];
 
 	nix = {
 		settings.experimental-features = [ "nix-command" "flakes" ];
 		optimise.automatic = true;
 	};
+
+	disko.devices.disk.main.device = "/dev/vda";
 
 	boot = {
 		loader = {

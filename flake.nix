@@ -7,9 +7,10 @@
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		xremap.url = "github:xremap/nix-flake";
 		stylix.url = "github:danth/stylix";
+		disko.url = "github:nix-community/disko";
 		dotfiles = {
-		  flake = false;
-          url = "github:velasko/dotfiles/nixos";
+			flake = false;
+			url = "github:velasko/dotfiles/nixos";
         };
 	};
 
