@@ -28,7 +28,7 @@
 				configurationLimit = 10;
 				efiSupport = true;
 				zfsSupport = true;
-				efiInstallAsRemovable = !config.boot.loader.efi.canTouchEfiVariables;
+				efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
 				mirroredBoots = [
 					{ devices = [ "nodev" ]; path = "/boot"; }
 				];
@@ -40,7 +40,7 @@
 			};
 
 			efi = {
-				# canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
 				efiSysMountPoint = "/boot/efi";
 			};
 		};	
