@@ -12,7 +12,7 @@
 		optimise.automatic = true;
 	};
 
-	# disko.devices.disk.main.device = "/dev/vda";
+	disko.devices.disk.main.device = "/dev/vda";
 
 	boot = {
 		loader = {
