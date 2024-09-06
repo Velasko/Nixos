@@ -1,5 +1,3 @@
-#!/bin/bash
-
-nix-store --gc
-nix-collect-garbage --delete-old
+sudo nix-store --gc
+sudo nix-collect-garbage --delete-old
 rm -rf ~/.cache/nix
