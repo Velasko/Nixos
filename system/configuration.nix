@@ -13,25 +13,29 @@
 	};
 
 	disko.devices.disk.main.device = "/dev/vda";
+	disko.enableConfig = false;
 
 	boot = {
 		loader = {
 			grub = {
 				enable = !config.boot.loader.systemd-boot.enable;
-				device = "nodev";
 				useOSProber = true;
 				configurationLimit = 10;
 				efiSupport = true;
-				# efiInstallAsRemovable = true;
+				zfsSupport = true;
+				efiInstallAsRemovable = true;
+				mirroredBoots = [
+					{ devices = "nodev"; path = "/boot"; };
+				];
 			};
 
 			systemd-boot = {
-				enable = true;
+				enable = false;
 				configurationLimit = 10;
 			};
 
 			efi = {
-				# canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
 				efiSysMountPoint = "/boot/efi";
 			};
 		};	
