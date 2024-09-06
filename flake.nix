@@ -8,6 +8,7 @@
 		xremap.url = "github:xremap/nix-flake";
 		stylix.url = "github:danth/stylix";
 		disko.url = "github:nix-community/disko";
+		disko.inputs.nixpkgs.follows = "nixpkgs";
 		dotfiles = {
 			flake = false;
 			url = "github:velasko/dotfiles/nixos";
