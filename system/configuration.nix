@@ -18,17 +18,22 @@
 		loader = {
 			grub = {
 				enable = !config.boot.loader.systemd-boot.enable;
-				device = "/dev/vda";
+				device = "nodev";
 				useOSProber = true;
 				configurationLimit = 10;
+				efiSupport = true;
+				efiInstallAsRemovable = true;
 			};
 
 			systemd-boot = {
-				enable = true;
+				enable = false;
 				configurationLimit = 10;
 			};
 
-			efi.canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+			efi = {
+				canTouchEfiVariables = true;
+				efiSysMountPoint = "/boot/efi";
+			};
 		};	
 
 		
