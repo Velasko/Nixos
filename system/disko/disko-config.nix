@@ -44,6 +44,7 @@
           xattr = "sa";
         };
         options.ashift = "12";
+		mountpoint = "/";
 
         datasets = {
           "local" = {
