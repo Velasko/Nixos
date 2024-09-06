@@ -16,39 +16,28 @@
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
 	let
 		inherit (nixpkgs.lib.lists) foldl forEach;
-		pkgs = nixpkgs.legacyPackages.${system};
+		pkgs = import nixpkgs {
+			config.allowUnfree = true;
+			inherit system;
+		};
+
 		system = "x86_64-linux";
 		machines = ["nixos" "work"];
 		username = "velasco";
 		default_hostname = builtins.elemAt machines 0;
 	in {
 		nixosConfigurations = foldl (a: b: a // b) { } (
-			forEach machines (hostname: {	
+			forEach machines (hostname: {
 				"${hostname}" = nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs; inherit username; inherit hostname; };
-					inherit system;
+					specialArgs = { inherit inputs username hostname stylix; };
 					modules = [
 						./system/hardware-configuration.nix
 						./system/configuration.nix
-					];
-				};
-			})
-		);
-
-		homeConfigurations = let
-			configure = hostname: {
-				"${hostname}" = home-manager.lib.homeManagerConfiguration {
-					extraSpecialArgs = { inherit inputs; inherit username; inherit hostname; };
-					inherit pkgs;
-					modules = [
 						./home/base.nix
 					];
+					inherit system;
 				};
-			};
-		in foldl (a: b: a // b) {
-			"${username}" = (configure default_hostname)."${default_hostname}";
-		} (
-			forEach machines configure
+			})
 		);
 	};
 }

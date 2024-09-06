@@ -1,19 +1,29 @@
-{ pkgs, config, hostname, username, ... } : {
+{ inputs, pkgs, hostname, username, stylix, ... } : {
 	imports = [
-		./${username}/home.nix
+		inputs.home-manager.nixosModules.home-manager {
+			home-manager = {
+				extraSpecialArgs = { inherit inputs pkgs hostname username; };
+				useUserPackages = true;
+				useGlobalPkgs = true;
+			};
+		}
 	];
 
-	nixpkgs.config.allowUnfree = true;
+	home-manager.users."${username}" = {
+		imports = [
+			stylix.homeManagerModules.stylix
+			./${username}/home.nix
+		];
 
-	home.homeDirectory = "/home/${username}";
-	home.stateVersion = "24.05";
-	home.username = "${username}";
 
-	fonts.fontconfig.enable = true;
-	home.packages = with pkgs; [
-		inconsolata-nerdfont
-		libsecret
-	];
+		home.homeDirectory = "/home/${username}";
+		home.stateVersion = "24.05";
+		home.username = "${username}";
 
-	programs.home-manager.enable = true;
+		fonts.fontconfig.enable = true;
+		home.packages = with pkgs; [
+			inconsolata-nerdfont
+			libsecret
+		];
+	};
 }
