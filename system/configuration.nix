@@ -28,10 +28,9 @@
 				efiSupport = true;
 				zfsSupport = true;
 				efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
-				device = "/dev/vda";
-				# mirroredBoots = [
-				# 	{ devices = [ "/dev/vda" ]; path = "/boot"; }
-				# ];
+				mirroredBoots = [
+					{ devices = [ "nodev" ]; path = "/boot"; }
+				];
 			};
 
 			systemd-boot = {
@@ -39,10 +38,10 @@
 				configurationLimit = 10;
 			};
 
-			efi = {
-				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
-				efiSysMountPoint = "/boot/efi";
-			};
+			# efi = {
+			# 	canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+			# 	efiSysMountPoint = "/boot/efi";
+			# };
 		};	
 
 		
