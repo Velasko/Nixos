@@ -10,10 +10,10 @@
 	];
 
 	home-manager.users."${username}" = {
-		imports = [
-			stylix.homeManagerModules.stylix
-			./${username}/home.nix
-		];
+		# imports = [
+		# 	stylix.homeManagerModules.stylix
+		# 	./${username}/home.nix
+		# ];
 
 
 		home.homeDirectory = "/home/${username}";

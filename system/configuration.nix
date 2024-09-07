@@ -18,7 +18,7 @@
 		supportedFilesystems = [ "zfs" ];
 		zfs = {
 			forceImportRoot = true;
-			# extraPools = [ "zroot" ];
+			extraPools = [ "zroot" ];
 		};
 
 		loader = {
@@ -39,10 +39,10 @@
 				configurationLimit = 10;
 			};
 
-			efi = {
-				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
-				efiSysMountPoint = "/boot/efi";
-			};
+			# efi = {
+			# 	canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+			# 	efiSysMountPoint = "/boot/efi";
+			# };
 		};	
 
 		
