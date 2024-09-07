@@ -17,7 +17,7 @@
 	boot = {
 		supportedFilesystems = [ "zfs" ];
 		zfs = {
-			forceImportRoot = false;
+			forceImportRoot = true;
 		};
 
 		loader = {
@@ -28,9 +28,10 @@
 				efiSupport = true;
 				zfsSupport = true;
 				efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
-				mirroredBoots = [
-					{ devices = [ "nodev" ]; path = "/boot"; }
-				];
+				device = "/dev/vda";
+				# mirroredBoots = [
+				# 	{ devices = [ "/dev/vda" ]; path = "/boot"; }
+				# ];
 			};
 
 			systemd-boot = {
