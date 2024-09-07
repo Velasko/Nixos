@@ -26,7 +26,7 @@
 			inherit system;
 		};
 
-		# platform = config.nixpkgs.hostPlatform;
+		platform = pkgs.config.nixpkgs.hostPlatform;
 		system = "x86_64-linux";
 		machines = ["nixos" "work"];
 		username = "velasco";
