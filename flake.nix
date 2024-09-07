@@ -14,7 +14,7 @@
         };
 		github-keys = {
 			flake = false;
-			url = "github:velasko.keys"
+			url = "https://github.com/velasko.keys";
 		};
 	};
 
