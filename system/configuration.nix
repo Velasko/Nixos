@@ -42,9 +42,8 @@
 				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
 				efiSysMountPoint = "/boot";
 			};
-		};	
-		filesystems."/boot".options = [ "fmask=022" "umask=0022" ];
-		
+		};
+
 		binfmt.registrations.appimage = {
 			wrapInterpreterInShell = false;
 			interpreter = "${pkgs.appimage-run}/bin/appimage-run";
@@ -54,6 +53,8 @@
 			magicOrExtension = ''\x7fELF....AI\x02'';
 		};
 	};
+
+	filesystems."/boot".options = [ "fmask=022" "umask=0022" ];
 
 	powerManagement.cpuFreqGovernor = "performance";
 	powerManagement.cpufreq.min = 41000;
