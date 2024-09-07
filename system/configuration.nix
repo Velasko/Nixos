@@ -30,7 +30,7 @@
 				zfsSupport = true;
 				efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
 				mirroredBoots = [
-					{ devices = [ "nodev" ]; path = "/boot"; }
+					{ devices = [ "/dev/vda" ]; path = "/boot"; }
 				];
 			};
 
