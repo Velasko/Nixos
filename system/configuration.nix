@@ -90,13 +90,20 @@
 	users.users."${username}"= {
 		shell = pkgs.zsh;
 		isNormalUser = true;
-		description = "${username}";
+		description = username;
 		extraGroups = [ "networkmanager" "wheel" ];
 	};
 
+	security.sudo.extraRules = [
+		{
+			commands = [ { command = "ALL"; options = [ "NOPASSWD" ]; } ];
+			users = [ username ];
+		}
+	];
+
 	hardware.uinput.enable = true;
-	users.groups.uinput.members = ["${username}"];
-	users.groups.input.members = ["${username}"];
+	users.groups.uinput.members = [ username ];
+	users.groups.input.members = [ username ];
 
 	nixpkgs.config.allowUnfree = true;
 
