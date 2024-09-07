@@ -14,6 +14,8 @@
 
 	disko.enableConfig = true;
 
+	# filesystems."/boot".options = [ "fmask=022" "umask=0022" "defaults" ];
+
 	boot = {
 		supportedFilesystems = [ "zfs" ];
 		zfs = {
@@ -53,8 +55,6 @@
 			magicOrExtension = ''\x7fELF....AI\x02'';
 		};
 	};
-
-	filesystems."/boot".options = [ "fmask=022" "umask=0022" ];
 
 	powerManagement.cpuFreqGovernor = "performance";
 	powerManagement.cpufreq.min = 41000;

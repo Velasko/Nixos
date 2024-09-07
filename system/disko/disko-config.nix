@@ -20,6 +20,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+				mountOptions = [ "fmask=022" "umask=0022" "defaults"];
               };
             };
             zfs = {
