@@ -1,10 +1,10 @@
-{ hostname, username, pkgs, ... } : {
+{ environment, username, pkgs, ... } : {
 	imports = [
 		./modules/gitconfig.nix
 		./modules/shell.nix
 		./modules/stylix.nix
 		./modules/programming.nix
-		./systems/${hostname}.nix
+		./systems/${environment}.nix
 	];
 
 	programs.btop.enable = true;

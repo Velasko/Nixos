@@ -23,25 +23,24 @@
 		inherit (nixpkgs.lib.lists) foldl forEach;
 		pkgs = import nixpkgs {
 			config.allowUnfree = true;
-			inherit system;
+			inherit platform;
 		};
 
 		platform = pkgs.config.nixpkgs.hostPlatform;
-		system = "x86_64-linux";
-		machines = ["nixos" "work"];
+		machines = [ "samsung-book4" ];
+		environments = ["nixos" "work"];
 		username = "velasco";
 		default_hostname = builtins.elemAt machines 0;
 	in {
 		nixosConfigurations = foldl (a: b: a // b) { } (
-			forEach machines (hostname: {
-				"${hostname}" = nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username hostname stylix; };
+			forEach environments (environment: {
+				"${environment}" = nixpkgs.lib.nixosSystem {
+					specialArgs = { inherit inputs username environment stylix; };
 					modules = [
 						./system/hardware-configuration.nix
 						./system/configuration.nix
 						./home/base.nix
 					];
-					inherit system;
 				};
 			})
 		);

@@ -1,6 +1,6 @@
-{ hostname, ... } : {
+{ environment, ... } : {
   networking.networkmanager.enable = true;
-  networking.hostName = "${hostname}"; # Define your hostname.
+  networking.hostName = "${environment}"; # Define your hostname.
   networking.hostId = "babaca01"; # Disko required
 
   services.openssh = {

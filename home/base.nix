@@ -1,8 +1,8 @@
-{ config,  inputs, pkgs, hostname, username, stylix, ... } : {
+{ config,  inputs, pkgs, environment, username, stylix, ... } : {
 	imports = [
 		inputs.home-manager.nixosModules.home-manager {
 			home-manager = {
-				extraSpecialArgs = { inherit inputs pkgs hostname username; };
+				extraSpecialArgs = { inherit inputs pkgs environment username; };
 				useUserPackages = true;
 				useGlobalPkgs = true;
 			};
