@@ -18,7 +18,7 @@
 		supportedFilesystems = [ "zfs" ];
 		zfs = {
 			forceImportRoot = true;
-			extraPools = [ "local" ];
+			# extraPools = [ "zroot" ];
 		};
 
 		loader = {
