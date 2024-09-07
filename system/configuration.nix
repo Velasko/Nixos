@@ -43,7 +43,7 @@
 				efiSysMountPoint = "/boot";
 			};
 		};	
-
+		filesystems."/boot".options = [ "fmask=022" "umask=0022" ];
 		
 		binfmt.registrations.appimage = {
 			wrapInterpreterInShell = false;
