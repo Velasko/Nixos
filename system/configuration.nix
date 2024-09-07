@@ -12,13 +12,12 @@
 		optimise.automatic = true;
 	};
 
-	disko.enableConfig = false;
+	disko.enableConfig = true;
 
 	boot = {
 		supportedFilesystems = [ "zfs" ];
 		zfs = {
 			forceImportRoot = false;
-			# extraPools = [ "zroot" ];
 		};
 
 		loader = {
