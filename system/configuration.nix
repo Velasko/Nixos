@@ -93,7 +93,7 @@
 		isNormalUser = true;
 		description = username;
 		extraGroups = [ "networkmanager" "wheel" ];
-		openssh.authorizedKeys.keys = inputs.github-keys;
+		openssh.authorizedKeys.keys = pkgs.lib.strings.splitString inputs.github-keys;
 	};
 
 	security.sudo.extraRules = [
