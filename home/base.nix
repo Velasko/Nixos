@@ -20,10 +20,10 @@
 		home.stateVersion = config.system.stateVersion;
 		home.username = "${username}";
 
-		fonts.fontconfig.enable = true;
-		home.packages = with pkgs; [
-			inconsolata-nerdfont
-			libsecret
-		];
+		# fonts.fontconfig.enable = true;
+		# home.packages = with pkgs; [
+		# 	inconsolata-nerdfont
+		# 	libsecret
+		# ];
 	};
 }
