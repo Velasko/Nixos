@@ -1,9 +1,17 @@
 DISKPATH="/tmp/disko.nix"
 
-curl https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/disko-config.nix > $DISKPATH
+curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
+
+curl https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/disko-config.nix -o $DISKPATH
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko $DISKPATH
-sudo nixos-install --flake 'github:velasko/nixos#nixos' --root /mnt
+
+sudo nixos-install \
+	--no-root-passwd \
+	--no-channel-copy \
+	--no-write-lock-file \
+	--flake 'github:velasko/nixos#nixos' \
+	--root /mnt
 
 # sudo nix --experimental-features "nix-command flakes" \
 # run 'github:nix-community/disko#disko-install' -- \
