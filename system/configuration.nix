@@ -14,7 +14,7 @@
 
 	disko.enableConfig = true;
 
-	# filesystems."/boot".options = [ "fmask=022" "umask=0022" "defaults" ];
+	filesystems."/boot".options = [ "fmask=022" "umask=0022" "defaults" ];
 
 	boot = {
 		supportedFilesystems = [ "zfs" ];
