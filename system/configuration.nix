@@ -34,14 +34,14 @@
 			};
 
 			systemd-boot = {
-				enable = false;
+				enable = true;
 				configurationLimit = 10;
 			};
 
-			# efi = {
-			# 	canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
-			# 	efiSysMountPoint = "/boot/efi";
-			# };
+			efi = {
+				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+				efiSysMountPoint = "/boot/efi";
+			};
 		};	
 
 		
