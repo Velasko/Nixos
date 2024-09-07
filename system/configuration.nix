@@ -12,7 +12,7 @@
 		optimise.automatic = true;
 	};
 
-	disko.enableConfig = true;
+	# disko.enableConfig = true;
 
 	boot = {
 		supportedFilesystems = [ "zfs" ];
@@ -30,7 +30,7 @@
 				zfsSupport = true;
 				efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
 				mirroredBoots = [
-					{ devices = [ "/dev/vda" ]; path = "/boot"; }
+					{ devices = [ "nodev" ]; path = "/boot"; }
 				];
 			};
 
@@ -39,10 +39,10 @@
 				configurationLimit = 10;
 			};
 
-			# efi = {
-			# 	canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
-			# 	efiSysMountPoint = "/boot/efi";
-			# };
+			efi = {
+				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
+				efiSysMountPoint = "/boot/efi";
+			};
 		};	
 
 		
