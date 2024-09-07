@@ -110,7 +110,7 @@
 		autoUpgrade = {
 			enable = true;
 			allowReboot = false;
-			channel = "https://channels.nixos.org/nixos-${config.system.stateVersion}"
+			channel = "https://channels.nixos.org/nixos-${config.system.stateVersion}";
 		};
 	};
 }
