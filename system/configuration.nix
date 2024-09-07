@@ -105,5 +105,12 @@
 		git
 	];
 
-	system.stateVersion = "24.05";
+	system = {
+		stateVersion = "24.05";
+		autoUpgrade = {
+			enable = true;
+			allowReboot = false;
+			channel = "https://channels.nixos.org/nixos-${config.system.stateVersion}"
+		};
+	};
 }

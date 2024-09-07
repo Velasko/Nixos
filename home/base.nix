@@ -1,4 +1,4 @@
-{ inputs, pkgs, hostname, username, stylix, ... } : {
+{ config,  inputs, pkgs, hostname, username, stylix, ... } : {
 	imports = [
 		inputs.home-manager.nixosModules.home-manager {
 			home-manager = {
@@ -17,7 +17,7 @@
 
 
 		home.homeDirectory = "/home/${username}";
-		home.stateVersion = "24.05";
+		home.stateVersion = config.system.stateVersion;
 		home.username = "${username}";
 
 		fonts.fontconfig.enable = true;
