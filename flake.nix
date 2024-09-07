@@ -12,6 +12,10 @@
 			flake = false;
 			url = "github:velasko/dotfiles/nixos";
         };
+		github-keys = {
+			flake = false;
+			url = "github:velasko.keys"
+		};
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
@@ -22,6 +26,7 @@
 			inherit system;
 		};
 
+		# platform = config.nixpkgs.hostPlatform;
 		system = "x86_64-linux";
 		machines = ["nixos" "work"];
 		username = "velasco";

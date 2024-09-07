@@ -46,6 +46,7 @@ in {
     ".tmux".source = "${inputs.dotfiles}/.tmux/";
     ".config/micro".source = "${inputs.dotfiles}/.config/micro/";
     ".config/nvim".source = "${inputs.dotfiles}/.config/nvim/";
+	".ssh/authorized_keys" = inputs.github-keys;
   };
 
 }
