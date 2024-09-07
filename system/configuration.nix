@@ -40,7 +40,7 @@
 
 			efi = {
 				canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
-				efiSysMountPoint = "/boot/efi";
+				efiSysMountPoint = "/boot";
 			};
 		};	
 
