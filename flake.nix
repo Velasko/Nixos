@@ -16,6 +16,10 @@
 			flake = false;
 			url = "https://github.com/velasko.keys";
 		};
+		machine-id = {
+			flake = false;
+			url = "path:/etc/machine-id";
+		};
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
@@ -27,7 +31,8 @@
 		};
 
 		platform = pkgs.config.nixpkgs.hostPlatform;
-		machines = [ "samsung-book4" ];
+		machines = [ "samsung-book4" "virtualized"];
+		machine = "virtualized";
 		environments = ["nixos" "work"];
 		username = "velasco";
 		default_hostname = builtins.elemAt machines 0;
@@ -37,7 +42,7 @@
 				"${environment}" = nixpkgs.lib.nixosSystem {
 					specialArgs = { inherit inputs username environment stylix; };
 					modules = [
-						./system/hardware-configuration.nix
+						./system/hw-config/${machine}.nix
 						./system/configuration.nix
 						./home/base.nix
 					];
@@ -46,3 +51,5 @@
 		);
 	};
 }
+
+
