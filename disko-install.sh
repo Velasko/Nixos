@@ -13,6 +13,8 @@ sudo nixos-install \
 	--flake 'github:velasko/nixos#nixos' \
 	--root /mnt
 
+# sudo nixos-enter --root /mnt -c 'passwd velasco'
+
 # sudo nix --experimental-features "nix-command flakes" \
 # run 'github:nix-community/disko#disko-install' -- \
 # 	--write-efi-boot-entries \
