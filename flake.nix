@@ -16,7 +16,7 @@
 			flake = false;
 			url = "https://github.com/velasko.keys";
 		};
-		machine-id = {
+		machine-id-file = {
 			flake = false;
 			url = "path:/etc/machine-id";
 		};
@@ -39,10 +39,10 @@
 		platform = pkgs.config.nixpkgs.hostPlatform;
 		machines = {
 			samsung = "samsung-book4";
-			db8e3934eee544689f3e2460bef7a0d8 = "virtualized";
-			f9e173a52ff64f2b8fee83bbc966ea8c = "virtualized";
+			db8e3934eee544689f3e2460bef7a0d = "virtualized";
 		};
-		machine = machines."${concatStrings (splitString "\n" (builtins.readFile inputs.machine-id))}";
+		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file))
+		machine = machines."${machine-id}" or "new";
 		environments = ["nixos" "minimal" "work"];
 		username = "velasco";
 	in {

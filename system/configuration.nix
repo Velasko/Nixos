@@ -1,4 +1,4 @@
-{ pkgs, username, inputs, config, machine, ... } : {
+{ pkgs, inputs, config, machine, username, environment, ... } : {
 	imports = [
 		./modules/display.nix
 		./modules/network.nix
@@ -109,9 +109,12 @@
 
 	nixpkgs.config.allowUnfree = true;
 
-	environment.systemPackages = with pkgs; [
-		git
-	];
+	environment = {
+		systemPackages = with pkgs; [
+			git
+		];
+		etc.nixenv.text = environment;
+	};
 
 	system = {
 		stateVersion = "24.05";
