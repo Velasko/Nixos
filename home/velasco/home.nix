@@ -4,7 +4,7 @@
 		./modules/shell.nix
 		./modules/stylix.nix
 		./modules/programming.nix
-		./systems/${environment}.nix
+		./environments/${environment}.nix
 	];
 
 	programs.btop.enable = true;
