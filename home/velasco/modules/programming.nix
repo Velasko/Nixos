@@ -3,9 +3,9 @@ let
 	python = pkgs.python312;
 	pythonPkgs = pkgs.python312Packages;
 in {
-  programs.alacritty.enable = true;
+	programs.alacritty.enable = true;
 
-  home.packages = with pkgs; [
+	home.packages = with pkgs; [
 # env/shell/utils
 		autojump
 		direnv
@@ -16,36 +16,37 @@ in {
 		tree
 		wget
 
-# Lua
+		# Lua
 		lua-language-server
 
-# Python
+		# Python
 		python
 		pythonPkgs.jedi-language-server
 		ruff
 
-# Rust appls
+		# Rust appls
 		bacon
 		cargo
 		clippy
 		# rustup
 		rust-analyzer
 
+# Nix
+		nil
+
 # Dependencies
 		gcc
+	];
 
-  ];
+	home.sessionVariables = {
+	EDITOR = "nvim";
+	ZSH_TMUX_AUTOSTART = "true";
+	};
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    ZSH_TMUX_AUTOSTART = "true";
-  };
-
-  home.file = {
-    ".tmux.conf".source = "${inputs.dotfiles}/.tmux.conf";
-    ".tmux".source = "${inputs.dotfiles}/.tmux/";
-    ".config/micro".source = "${inputs.dotfiles}/.config/micro/";
-    ".config/nvim".source = "${inputs.dotfiles}/.config/nvim/";
-  };
-
+	home.file = {
+	".tmux.conf".source = "${inputs.dotfiles}/.tmux.conf";
+	".tmux".source = "${inputs.dotfiles}/.tmux/";
+	".config/micro".source = "${inputs.dotfiles}/.config/micro/";
+	".config/nvim".source = "${inputs.dotfiles}/.config/nvim/";
+	};
 }

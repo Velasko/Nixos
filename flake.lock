@@ -137,11 +137,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1725571291,
-        "narHash": "sha256-Lmh6MYfHO2akQ6tuNzWA3J6TaY4IuvG3zNDvoRu6f6A=",
+        "lastModified": 1725759921,
+        "narHash": "sha256-FwwMJ6Opb9nzNohfavZEgUGb1iQ4Bn2KwVYfJxphdLo=",
         "owner": "velasko",
         "repo": "dotfiles",
-        "rev": "402a9ee6ac32a2e354fecf82b32edb8f4fb6f832",
+        "rev": "a7308968a1ab427fb4ea026b88b4cd28ba34668b",
         "type": "github"
       },
       "original": {
