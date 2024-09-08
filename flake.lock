@@ -275,6 +275,19 @@
         "type": "github"
       }
     },
+    "machine-id": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725688654,
+        "narHash": "sha256-x0af0nUSCEp2c19Wai392t7pr/nB0hEGBn/Q0KPH8Ok=",
+        "path": "/etc/machine-id",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/machine-id",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1725407940,
@@ -313,6 +326,7 @@
         "dotfiles": "dotfiles",
         "github-keys": "github-keys",
         "home-manager": "home-manager",
+        "machine-id": "machine-id",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix"
       }

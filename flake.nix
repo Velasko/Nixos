@@ -25,14 +25,19 @@
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
 	let
 		inherit (nixpkgs.lib.lists) foldl forEach;
+		inherit (nixpkgs.lib.strings) concatStrings splitString;
+
 		pkgs = import nixpkgs {
 			config.allowUnfree = true;
 			inherit platform;
 		};
 
 		platform = pkgs.config.nixpkgs.hostPlatform;
-		machines = [ "samsung-book4" "virtualized"];
-		machine = "virtualized";
+		machines = {
+			samsung = "samsung-book4";
+			db8e3934eee544689f3e2460bef7a0d8 = "virtualized";
+		};
+		machine = machines."${concatStrings (splitString "\n" (builtins.readFile inputs.machine-id))}";
 		environments = ["nixos" "work"];
 		username = "velasco";
 		default_hostname = builtins.elemAt machines 0;
