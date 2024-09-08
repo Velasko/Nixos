@@ -1,5 +1,8 @@
 DISKPATH="/tmp/disko.nix"
 
+# Generate hw-config file:
+# nixos-generate-config --no-filesystems --root /mnt
+
 curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
 
