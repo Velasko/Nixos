@@ -1,10 +1,10 @@
-{ pkgs, username, inputs, config, ... } : {
+{ pkgs, username, inputs, config, machine, ... } : {
 	imports = [
 		./modules/display.nix
 		./modules/network.nix
 		./modules/audio.nix
 		inputs.disko.nixosModules.disko
-		./disko/disko-config.nix
+		./disko/${machine}.nix
 	];
 
 	nix = {

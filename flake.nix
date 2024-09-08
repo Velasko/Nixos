@@ -45,7 +45,7 @@
 		nixosConfigurations = foldl (a: b: a // b) { } (
 			forEach environments (environment: {
 				"${environment}" = nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username environment stylix; };
+					specialArgs = { inherit inputs username environment stylix machine; };
 					modules = [
 						./system/hw-config/${machine}.nix
 						./system/configuration.nix
