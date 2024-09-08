@@ -20,6 +20,10 @@
 			flake = false;
 			url = "path:/etc/machine-id";
 		};
+		# curr-env-id = {
+		# 	flake = false;
+		# 	url = "path:/etc/nixenv";
+		# };
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
@@ -36,23 +40,25 @@
 		machines = {
 			samsung = "samsung-book4";
 			db8e3934eee544689f3e2460bef7a0d8 = "virtualized";
+			f9e173a52ff64f2b8fee83bbc966ea8c = "virtualized";
 		};
 		machine = machines."${concatStrings (splitString "\n" (builtins.readFile inputs.machine-id))}";
-		environments = ["nixos" "work"];
+		environments = ["nixos" "minimal" "work"];
 		username = "velasco";
-		default_hostname = builtins.elemAt machines 0;
 	in {
-		nixosConfigurations = foldl (a: b: a // b) { } (
-			forEach environments (environment: {
+		nixosConfigurations = let
+			 configure = environment: {
 				"${environment}" = nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username environment stylix machine; };
+					specialArgs = { inherit inputs stylix username environment machine; };
 					modules = [
 						./system/hw-config/${machine}.nix
 						./system/configuration.nix
 						./home/base.nix
 					];
 				};
-			})
+			};
+		in foldl (a: b: a // b) { } (
+			forEach environments configure
 		);
 	};
 }
