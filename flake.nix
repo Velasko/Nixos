@@ -39,10 +39,10 @@
 		platform = pkgs.config.nixpkgs.hostPlatform;
 		machines = {
 			samsung = "samsung-book4";
-			db8e3934eee544689f3e2460bef7a0d = "virtualized";
+			db8e3934eee544689f3e2460bef7a0d8 = "virtualized";
 		};
-		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file))
-		machine = machines."${machine-id}" or "new";
+		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
+		machine = (machines."${machine-id}" or "new");
 		environments = ["nixos" "minimal" "work"];
 		username = "velasco";
 	in {

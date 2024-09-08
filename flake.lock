@@ -275,7 +275,7 @@
         "type": "github"
       }
     },
-    "machine-id": {
+    "machine-id-file": {
       "flake": false,
       "locked": {
         "lastModified": 1725688654,
@@ -326,7 +326,7 @@
         "dotfiles": "dotfiles",
         "github-keys": "github-keys",
         "home-manager": "home-manager",
-        "machine-id": "machine-id",
+        "machine-id-file": "machine-id-file",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix"
       }
