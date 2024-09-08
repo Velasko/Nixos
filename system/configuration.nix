@@ -4,7 +4,7 @@
 		./modules/network.nix
 		./modules/audio.nix
 		inputs.disko.nixosModules.disko
-		./disko/${machine}.nix
+		./${machine}/disko.nix
 	];
 
 	nix = {
