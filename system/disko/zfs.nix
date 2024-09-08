@@ -4,11 +4,11 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
-{
+{ lib, ...}: {
   disko.devices = {
     disk = {
       main = {
-		device = "/dev/vda";
+		device = lib.mkDefault "/dev/sda";
         type = "disk";
         content = {
           type = "gpt";

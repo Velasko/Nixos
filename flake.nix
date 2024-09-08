@@ -20,12 +20,16 @@
 			flake = false;
 			url = "path:/etc/machine-id";
 		};
+		cpu-info = {
+			flake = false;
+			url = "path:/proc/cpuinfo";
+		};
 	};
 
 	outputs = { nixpkgs, home-manager, stylix, ... } @inputs :
 	let
 		inherit (nixpkgs.lib.lists) foldl forEach;
-		inherit (nixpkgs.lib.strings) concatStrings splitString;
+		inherit (nixpkgs.lib.strings) concatStrings splitString hasInfix;
 
 		pkgs = import nixpkgs {
 			config.allowUnfree = true;
@@ -38,6 +42,8 @@
 			db8e3934eee544689f3e2460bef7a0d8 = "zfs-virtualized";
 		};
 		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
+
+		virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
 		machine = (machines."${machine-id}" or "unknown");
 		environments = ["nixos" "minimal" "work"];
 		username = "velasco";
@@ -45,7 +51,7 @@
 		nixosConfigurations = let
 			 configure = environment: {
 				"${machine}-${environment}" = nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs stylix username environment machine; };
+					specialArgs = { inherit inputs stylix username environment machine virtualized; };
 					modules = [
 						./system/${machine}/hardware-configuration.nix
 						./system/configuration.nix

@@ -5,20 +5,28 @@ DISKPATH="/tmp/disko.nix"
 
 curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
+if [[ $(cat /proc/cpuinfo) != *"hypervisor"* -o $(cat /etc/machine-id) == "db8e3934eee544689f3e2460bef7a0d8" ]]; then
+	disko_url="zfs"
+else
+	disko_url="ext4"
+fi
 
-curl https://github.com/Velasko/Nixos/blob/bb13a84f8c8d57d5a9ac88c8ed8f37f6ed26d854/system/disko/virtualized.nix -o $DISKPATH
+curl "https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/${disko_type}.nix" -o $DISKPATH
+
+if [[ $(cat /proc/cpuinfo) != *"hypervisor"* ]]; then
+	# replace sda for vda
+fi
+
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
-	--mode disko $DISKPATH && \
+	--mode disko $DISKPATH
+
 sudo nixos-install \
 	--no-root-passwd \
 	--no-channel-copy \
 	--no-write-lock-file \
 	--flake 'github:velasko/nixos#minimal' \
-	--root /mnt && \
+	--root /mnt
+
 sudo nixos-enter --root /mnt -c 'passwd velasco'
 
-# sudo nix --experimental-features "nix-command flakes" \
-# run 'github:nix-community/disko#disko-install' -- \
-# 	--write-efi-boot-entries \
-# 	--flake 'github:velasko/nixos#nixos' \
-# 	--disk main /dev/vda
+

@@ -1,10 +1,13 @@
-{ pkgs, inputs, config, machine, username, environment, ... } : {
+{ pkgs, inputs, config, machine, username, environment, virtualized, ... } : let
+	disk-type = if !virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
+in {
+
 	imports = [
 		./modules/display.nix
 		./modules/network.nix
 		./modules/audio.nix
 		inputs.disko.nixosModules.disko
-		./${machine}/disko.nix
+		./disko/${disk-type}.nix
 	];
 
 	nix = {
@@ -113,7 +116,7 @@
 		systemPackages = with pkgs; [
 			git
 		];
-		etc.nixenv.text = environment;
+		etc.nixenv.text = if config.networking.dhcpcd.extraConfig == "noarp" then "true" else "false";
 	};
 
 	system = {

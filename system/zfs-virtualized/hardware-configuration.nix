@@ -13,11 +13,6 @@
 	boot.kernelModules = [ "kvm-amd" ];
 	boot.extraModulePackages = [ ];
 
-	# fileSystems."/" = {
-	# 	device = "local/root";
-	# 	fsType = "zfs";
-	# };
-
 	swapDevices = [ ];
 
 	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -28,4 +23,5 @@
 	# networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+	disko.devices.disk.main.device = "/dev/vda";
 }
