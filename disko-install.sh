@@ -26,8 +26,8 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 # Preping repo for install
 NIX_REPO="/tmp/Nixos"
 rm -rf $NIX_REPO
-nix-shell -p git --run "git clone https://github.com/Velasko/Nixos ${$NIX_REPO}"
-rm $NIX_REPO/flake.lock $NIX_REPO/.git
+nix-shell -p git --run "git clone https://github.com/Velasko/Nixos ${NIX_REPO}"
+rm -rf $NIX_REPO/flake.lock $NIX_REPO/.git
 cp /etc/nixos/hardware-configuration.nix $NIX_REPO/system/unknown/hardware-configuration.nix # Make build pure
 
 sudo nixos-install \
@@ -38,3 +38,5 @@ sudo nixos-install \
 	--root /mnt
 
 sudo nixos-enter --root /mnt -c 'passwd velasco'
+
+
