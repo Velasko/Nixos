@@ -16,6 +16,7 @@ in {
 	};
 
 	disko.enableConfig = true;
+	disko.devices.disk.main.device = "/dev/nvme0n1";
 
 	fileSystems."/boot".options = [ "fmask=022" "umask=0022" "defaults" ];
 
