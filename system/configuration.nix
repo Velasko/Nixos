@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, machine, username, environment, virtualized, ... } : let
+{ pkgs, inputs, config, lib, machine, username, environment, virtualized, ... } : let
 	disk-type = if !virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
 in {
 
@@ -40,7 +40,7 @@ in {
 			};
 
 			systemd-boot = {
-				enable = true;
+				enable = lib.mkDefault true;
 				configurationLimit = 10;
 			};
 
