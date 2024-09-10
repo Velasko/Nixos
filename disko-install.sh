@@ -1,9 +1,9 @@
 DISKPATH="/tmp/disko.nix"
 
 # Generate hw-config file:
-rm -f /etc/nixos/*
+sudo rm -f /etc/nixos/*
 # nixos-generate-config --no-filesystems --root /mnt
-nixos-generate-config --no-filesystems
+sudo nixos-generate-config --no-filesystems
 
 curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
@@ -24,14 +24,15 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 
 rm -rf /tmp/Nixos
 nix-shell -p git --run "git clone https://github.com/Velasko/Nixos /tmp/Nixos"
-rm /tmp/Nixos/flake.lock
+rm /tmp/Nixos/flake.lock /tmp/Nixos/.git
 
 sudo nixos-install \
 	--no-root-passwd \
 	--no-channel-copy \
 	--no-write-lock-file \
 	--flake /tmp/Nixos#minimal \
-	--root /mnt
+	--root /mnt \
+	--impure #For unknown systems with just generated configs
 
 sudo nixos-enter --root /mnt -c 'passwd velasco'
 
