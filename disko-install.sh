@@ -22,6 +22,7 @@ fi
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
 	--mode disko $DISKPATH
 
+rm -rf /tmp/Nixos
 nix-shell -p git --run "git clone https://github.com/Velasko/Nixos /tmp/Nixos"
 rm /tmp/Nixos/flake.lock
 
