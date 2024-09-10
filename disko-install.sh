@@ -3,18 +3,18 @@ DISKPATH="/tmp/disko.nix"
 # Generate hw-config file:
 # nixos-generate-config --no-filesystems --root /mnt
 
-curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
+# curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
-if [[ $(cat /proc/cpuinfo) != *"hypervisor"* -o $(cat /etc/machine-id) == "db8e3934eee544689f3e2460bef7a0d8" ]]; then
+if [[ $(cat /proc/cpuinfo) != *"hypervisor"* || $(cat /etc/machine-id) == "db8e3934eee544689f3e2460bef7a0d8" ]]; then
 	disko_url="zfs"
 else
 	disko_url="ext4"
 fi
 
-curl "https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/${disko_type}.nix" -o $DISKPATH
+curl "https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/${disko_url}.nix" -o $DISKPATH
 
 if [[ $(cat /proc/cpuinfo) != *"hypervisor"* ]]; then
-	# replace sda for vda
+	sed -i -e 's/sda/vda/g' $DISKPATH
 fi
 
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
