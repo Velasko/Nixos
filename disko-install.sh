@@ -16,17 +16,20 @@ fi
 curl "https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/${disko_url}.nix" -o $DISKPATH
 
 if [[ $(cat /proc/cpuinfo) != *"hypervisor"* ]]; then
-	sed -i -e 's/sda/vda/g' $DISKPATH
+	sed -i -e 's/vda/nvme0n1/g' $DISKPATH
 fi
 
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
 	--mode disko $DISKPATH
 
+nix-shell -p git --run "git clone https://github.com/Velasko/Nixos /tmp/Nixos"
+rm /tmp/Nixos/flake.lock
+
 sudo nixos-install \
 	--no-root-passwd \
 	--no-channel-copy \
 	--no-write-lock-file \
-	--flake 'github:velasko/nixos#minimal' \
+	--flake /tmp/Nixos#minimal \
 	--root /mnt
 
 sudo nixos-enter --root /mnt -c 'passwd velasco'
