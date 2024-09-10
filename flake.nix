@@ -36,22 +36,23 @@
 			inherit platform;
 		};
 
+		virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
 		platform = pkgs.config.nixpkgs.hostPlatform;
 		machines = {
-			samsung = "samsung-book4";
-			db8e3934eee544689f3e2460bef7a0d8 = "zfs-virtualized";
+			id_996b67fbf5c84008b8c18e234824785e = "book4";
+			id_db8e3934eee544689f3e2460bef7a0d8 = "zfs-virtualized";
 		};
 		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
 
-		virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
-		machine = (machines."${machine-id}" or "unknown");
+		machine = (machines."id_${machine-id}" or "unknown");
 		environments = ["nixos" "minimal" "work"];
 		username = "velasco";
+		hostname = "Velasco-${machine}";
 	in {
 		nixosConfigurations = let
 			 configure = environment: {
-				"${machine}-${environment}" = nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs stylix username environment machine virtualized; };
+				"${environment}" = nixpkgs.lib.nixosSystem {
+					specialArgs = { inherit inputs stylix hostname username environment machine virtualized; };
 					modules = [
 						./system/${machine}/hardware-configuration.nix
 						./system/configuration.nix
@@ -59,7 +60,8 @@
 					];
 				};
 			};
-		in foldl (a: b: a // b) { } (
+		in foldl (a: b: a // b) {
+		} (
 			forEach environments configure
 		);
 	};
