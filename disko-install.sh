@@ -1,9 +1,11 @@
 DISKPATH="/tmp/disko.nix"
 
 # Generate hw-config file:
+rm -f /etc/nixos/*
 # nixos-generate-config --no-filesystems --root /mnt
+nixos-generate-config --no-filesystems
 
-# curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
+curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
 if [[ $(cat /proc/cpuinfo) != *"hypervisor"* || $(cat /etc/machine-id) == "db8e3934eee544689f3e2460bef7a0d8" ]]; then
 	disko_url="zfs"
