@@ -5,6 +5,12 @@ DISKPATH="/tmp/disko.nix"
 sudo rm -f /etc/nixos/* # Directory must be clean to generate it
 sudo nixos-generate-config --no-filesystems
 
+if [[ $(cat /etc/nixos/configuration.nix) == *"grub.enable = true"* ]]; then
+	echo "in"
+	sudo sed -i -e "s/nixpkgs.hostPlatform/boot.loader.systemd-boot.enable = false;\n  nixpkgs.hostPlatform/g" /etc/nixos/hardware-configuration.nix
+fi
+echo "out"
+
 # Clean possible previous builds
 curl https://raw.githubusercontent.com/Velasko/Nixos/main/nix-clear.sh | bash -
 
@@ -37,6 +43,10 @@ sudo nixos-install \
 	--flake $NIX_REPO#minimal \
 	--root /mnt
 
-sudo nixos-enter --root /mnt -c 'passwd velasco'
+USER="velasco"
+
+sudo nixos-enter --root /mnt -c 'passwd ${USER}'
+
+mv $NIX_REPO /mnt/home/$USER/Nixos
 
 
