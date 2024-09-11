@@ -60,7 +60,7 @@ in {
 		};
 	};
 
-	powerManagement.cpuFreqGovernor = "performance";
+	powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 	powerManagement.cpufreq.min = 41000;
 
 	time.timeZone = "America/Sao_Paulo";
