@@ -45,7 +45,7 @@
 		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
 
 		machine = (machines."id_${machine-id}" or "unknown");
-		environments = ["nixos" "minimal" "work"];
+		environments = ["main" "minimal" "work"];
 		username = "velasco";
 		hostname = "Velasco-${machine}";
 	in {

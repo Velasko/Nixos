@@ -1,14 +1,14 @@
 { pkgs, ... } : {
 	home.packages = with pkgs; [
-		# bitwarden-desktop
-		# bitwardena-cli
-		# discord
-		# spotify
-		# telegram
-		# vesktop
-		# unzip
-		# vlc
-		# wine
+		bitwarden-desktop
+		bitwardena-cli
+		discord
+		spotify
+		telegram
+		vesktop
+		unzip
+		vlc
+		wine
 	];
 
 	home.sessionVariables = {
