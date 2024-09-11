@@ -39,7 +39,7 @@
 		virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
 		platform = pkgs.config.nixpkgs.hostPlatform;
 		machines = {
-			id_996b67fbf5c84008b8c18e234824785e = "book4";
+			id_4045046c63ab4f52b55f73688d192041 = "book4";
 			id_db8e3934eee544689f3e2460bef7a0d8 = "zfs-virtualized";
 		};
 		machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
