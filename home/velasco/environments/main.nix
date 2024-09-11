@@ -1,10 +1,10 @@
 { pkgs, ... } : {
 	home.packages = with pkgs; [
 		bitwarden-desktop
-		bitwardena-cli
+		bitwarden-cli
 		discord
 		spotify
-		telegram
+		telegram-desktop
 		vesktop
 		unzip
 		vlc
