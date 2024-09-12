@@ -21,8 +21,8 @@ in {
 
 		# Python
 		python
-		pythonPkgs.jedi-language-server
-		ruff
+		# pythonPkgs.jedi-language-server
+		# ruff
 
 		# Rust appls
 		bacon
