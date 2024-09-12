@@ -1,6 +1,7 @@
 { pkgs, inputs, config, lib, machines, username, environment, virtualized, ... }:
 let
   inherit (lib.strings) concatStrings splitString hasInfix;
+  virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
   machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
 
   machine = (machines."id_${machine-id}" or "unknown");

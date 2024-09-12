@@ -33,15 +33,11 @@
   outputs = { nixpkgs, home-manager, stylix, ... } @inputs:
     let
       inherit (nixpkgs.lib.lists) foldl forEach;
-      inherit (nixpkgs.lib.strings) concatStrings splitString hasInfix;
 
       pkgs = import nixpkgs {
         config.allowUnfree = true;
         inherit platform;
       };
-
-      virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
-      wsl = hasInfix "microsoft" (builtins.readFile inputs.proc-version);
 
       platform = pkgs.config.nixpkgs.hostPlatform;
       environments = [ "main" "minimal" "work" ];
@@ -57,7 +53,7 @@
         let
           configure = environment: {
             "${environment}" = nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs stylix username environment machines virtualized; };
+              specialArgs = { inherit inputs stylix username environment machines; };
               modules = [
                 ./system/main.nix
                 ./home/base.nix

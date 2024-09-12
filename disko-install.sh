@@ -20,7 +20,7 @@ else
 	disko_url="ext4"
 fi
 
-curl "https://raw.githubusercontent.com/Velasko/Nixos/main/system/disko/${disko_url}.nix" -o $DISKPATH
+curl "https://raw.githubusercontent.com/Velasko/Nixos/main/system/bootable/disko/${disko_url}.nix" -o $DISKPATH
 
 if [[ $(cat /proc/cpuinfo) != *"hypervisor"* ]]; then
 	sed -i -e 's/vda/nvme0n1/g' $DISKPATH
