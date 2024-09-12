@@ -1,11 +1,17 @@
-{ pkgs, inputs, config, lib, machine, username, environment, virtualized, ... }:
+{ pkgs, inputs, config, lib, machines, username, environment, virtualized, ... }:
 let
-  disk-type = if !virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
+  inherit (lib.strings) concatStrings splitString hasInfix;
+  machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
+
+  machine = (machines."id_${machine-id}" or "unknown");
+
+  disk-type = if ! virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
 in
 {
   imports = [
+    ./${machine}/hardware-configuration.nix
     ./modules/display.nix
-    ./modules/network.nix
+    (import ./modules/network.nix { machine = machine; username = username; })
     ./modules/audio.nix
     inputs.disko.nixosModules.disko
     ./disko/${disk-type}.nix

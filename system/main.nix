@@ -6,8 +6,10 @@ in
 
   imports = [
     ./common.nix
-  ] ++ if bootless then
-  [ ./wsl-configuration.nix]
-  else
-  [./boot-configurations.nix];
+    # ] ++ if bootless then
+    # [ ./wsl-configuration.nix]
+    # else
+    # [
+    ./boot-configurations.nix
+  ];
 }
