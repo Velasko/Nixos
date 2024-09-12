@@ -1,4 +1,4 @@
-{ username, ... }:
+{ pkgs, lib, username, ... }:
 {
   imports = [
     # include NixOS-WSL modules
@@ -12,4 +12,6 @@
     networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
   };
 
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
