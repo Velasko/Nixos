@@ -1,6 +1,6 @@
 { lib, inputs, ... }:
 let
-  inherit (lib.strings) concatStrings splitString hasInfix;
+  inherit (lib.strings) concatStrings hasInfix;
   wsl = hasInfix "microsoft" (builtins.readFile inputs.proc-version);
 
   bootless = wsl;
