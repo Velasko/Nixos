@@ -76,6 +76,4 @@ in
   hardware.uinput.enable = true;
   users.groups.uinput.members = [ username ];
   users.groups.input.members = [ username ];
-
-
 }
