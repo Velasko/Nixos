@@ -41,6 +41,7 @@
       };
 
       virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
+      wsl = hasInfix "microsoft" (builtins.readFile inputs.proc-version);
       platform = pkgs.config.nixpkgs.hostPlatform;
       machines = {
         id_4045046c63ab4f52b55f73688d192041 = "book4";
@@ -61,7 +62,7 @@
               specialArgs = { inherit inputs stylix hostname username environment machine virtualized; };
               modules = [
                 ./system/${machine}/hardware-configuration.nix
-                ./system/configuration.nix
+                ./system/main.nix
                 ./home/base.nix
               ];
             };
