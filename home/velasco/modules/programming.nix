@@ -14,7 +14,7 @@ in
     lazygit
     micro
     neovim
-    tar
+    gnutar
     tmux
     tree
     wget
