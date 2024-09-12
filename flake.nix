@@ -10,7 +10,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     dotfiles = {
       flake = false;
-      url = "github:velasko/dotfiles/nixos";
+      url = "github:velasko/dotfiles";
     };
     github-keys = {
       flake = false;
