@@ -16,13 +16,8 @@ in {
 		tree
 		wget
 
-		# Lua
-		lua-language-server
-
 		# Python
 		python
-		# pythonPkgs.jedi-language-server
-		# ruff
 
 		# Rust appls
 		bacon
@@ -30,9 +25,6 @@ in {
 		clippy
 		# rustup
 		rust-analyzer
-
-# Nix
-		nil
 
 # Dependencies
 		gcc
