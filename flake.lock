@@ -114,6 +114,19 @@
         "type": "github"
       }
     },
+    "cpu-info": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726173262,
+        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+        "path": "/proc/cpuinfo",
+        "type": "path"
+      },
+      "original": {
+        "path": "/proc/cpuinfo",
+        "type": "path"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -320,14 +333,29 @@
         "type": "github"
       }
     },
+    "proc-version": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726173262,
+        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+        "path": "/proc/cpuinfo",
+        "type": "path"
+      },
+      "original": {
+        "path": "/proc/cpuinfo",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
+        "cpu-info": "cpu-info",
         "disko": "disko",
         "dotfiles": "dotfiles",
         "github-keys": "github-keys",
         "home-manager": "home-manager",
         "machine-id-file": "machine-id-file",
         "nixpkgs": "nixpkgs",
+        "proc-version": "proc-version",
         "stylix": "stylix"
       }
     },
