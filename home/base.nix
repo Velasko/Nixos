@@ -20,9 +20,6 @@
     home.homeDirectory = "/home/${username}";
     home.stateVersion = config.system.stateVersion;
     home.username = "${username}";
-    home.sessionVariables = {
-      BASE16_THEME = "pop";
-    };
 
     fonts.fontconfig.enable = true;
     home.packages = with pkgs; [

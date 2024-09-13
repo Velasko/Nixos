@@ -1,17 +1,17 @@
-{ pkgs, config, lib, ... } : {
-	imports = [ ./powerline.nix ];
+{ pkgs, config, lib, ... }: {
+  imports = [ ./powerline.nix ];
 
   programs.alacritty = {
     enable = true;
     settings = {
-       font.normal = lib.mkForce {
-         family = "Inconsolata Nerd Font";
-         style = "Regular";
-       };
-       font.bold = lib.mkForce {
-         family = "Inconsolata Nerd Font";
-         style = "Bold";
-       };
+      font.normal = lib.mkForce {
+        family = "Inconsolata Nerd Font";
+        style = "Regular";
+      };
+      font.bold = lib.mkForce {
+        family = "Inconsolata Nerd Font";
+        style = "Bold";
+      };
     };
   };
 
@@ -26,26 +26,30 @@
       system = "FLAKE=~/.nixos nh os";
       home = "FLAKE=~/.nixos nh home";
       nix-clean = "nix-store --gc && nix-collect-garbage --delete old";
-     };
+    };
 
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/.zsh/history";
     };
 
+    sessionVariables = {
+      BASE16_THEME = "pop";
+    };
+
     oh-my-zsh = {
       enable = true;
       plugins = [
-      	"autojump"
-		"command-not-found"
-      	"direnv"
-		"fluxcd"
-      	"fzf"
-		"git"
-      	"rust"
-      	"tmux"
-		"themes"
-      	"web-search"
+        "autojump"
+        "command-not-found"
+        "direnv"
+        "fluxcd"
+        "fzf"
+        "git"
+        "rust"
+        "tmux"
+        "themes"
+        "web-search"
       ];
     };
   };
