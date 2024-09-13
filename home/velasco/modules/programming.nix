@@ -16,6 +16,9 @@ in
     tmux
     tree
 
+    # Go
+    go
+
     # Python
     python
 
