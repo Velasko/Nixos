@@ -9,15 +9,12 @@ in
   home.packages = with pkgs; [
     # env/shell/utils
     autojump
-    curl
     direnv
     lazygit
     micro
     neovim
-    gnutar
     tmux
     tree
-    wget
 
     # Python
     python
