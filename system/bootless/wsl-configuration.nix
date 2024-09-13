@@ -1,6 +1,7 @@
 { inputs, pkgs, lib, username, ... }:
 {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  environment.systemPackages = with pkgs; [ git ];
 
   imports = [
     inputs.nixos-wsl.nixosModules.default
