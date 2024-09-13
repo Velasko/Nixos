@@ -13,6 +13,7 @@
     curl
     firefox
     gnutar
+    gzip
     wget
   ];
 }
