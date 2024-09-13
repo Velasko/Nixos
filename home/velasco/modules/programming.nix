@@ -31,6 +31,7 @@ in
 
     # Dependencies
     gcc
+    nodejs_22
   ];
 
   home.sessionVariables = {
