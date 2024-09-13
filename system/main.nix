@@ -1,11 +1,12 @@
 { lib, inputs, ... }:
 let
-  inherit (lib.strings) concatStrings hasInfix;
-  wsl = hasInfix "microsoft" (builtins.readFile inputs.proc-version);
+  # Gotta find a way to check  if it's running whithin WSL
+  # inherit (lib.strings) concatStrings hasInfix;
+  # wsl = hasInfix "microsoft" (builtins.readFile inputs.proc-version);
 
-  bootless = wsl;
+  bootless = false;
   boot-type-configuration =
-    if wsl then
+    if false then
       [ ./bootless/configuration.nix ]
     else
       [ ./bootable/configuration.nix ];

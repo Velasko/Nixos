@@ -27,10 +27,6 @@
       flake = false;
       url = "path:/proc/cpuinfo";
     };
-    proc-version = {
-      flake = false;
-      url = "path:/proc/cpuinfo";
-    };
   };
 
   outputs = { nixpkgs, home-manager, stylix, ... } @inputs:
