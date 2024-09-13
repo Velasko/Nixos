@@ -29,6 +29,11 @@
     clean.extraArgs = "--keep-since 1d --keep 3";
   };
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+  ];
+
   programs = {
     zsh.enable = true;
     nix-ld.enable = true;
