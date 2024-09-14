@@ -15,7 +15,8 @@
   services = {
     libinput = {
       enable = true;
-      touchpad.naturalScrolling = true;
+      mouse.naturalScrolling = true;
+      mouse.accelProfile = "flat";
     };
 
     xserver = {
