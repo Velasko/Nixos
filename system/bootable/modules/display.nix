@@ -12,9 +12,24 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
-  services.xserver = {
-    xkb.layout = "br";
-    enable = true;
+  services = {
+    libinput = {
+      enable = true;
+    };
+    xserver = {
+      enable = true;
+      xkb.layout = "br";
+
+      # Set extra config to libinput devices
+      extraConfig = ''
+        Section "InputClass"
+          Identifier "touchpad"
+          Driver "libinput"
+          MatchIsTouchpad "on"
+          Option "NaturalScrolling" "true"
+        EndSection
+      '';
+    };
   };
 
   environment.sessionVariables = {
