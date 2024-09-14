@@ -1,7 +1,10 @@
 { inputs, pkgs, lib, username, ... }:
 {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  environment.systemPackages = with pkgs; [ dconf ];
+  environment = {
+    variables.XDG_SESSION_TYPE = "x11";
+    systemPackages = with pkgs; [ dconf ];
+  };
 
   imports = [
     inputs.nixos-wsl.nixosModules.default
