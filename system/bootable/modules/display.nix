@@ -22,6 +22,7 @@
     xserver = {
       enable = true;
       xkb.layout = "br";
+      exportConfiguration = true;
     };
   };
 
