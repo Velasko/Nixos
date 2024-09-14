@@ -15,20 +15,12 @@
   services = {
     libinput = {
       enable = true;
+      touchpad.naturalScrolling = true;
     };
+
     xserver = {
       enable = true;
       xkb.layout = "br";
-
-      # Set extra config to libinput devices
-      extraConfig = ''
-        Section "InputClass"
-          Identifier "touchpad"
-          Driver "libinput"
-          MatchIsTouchpad "on"
-          Option "NaturalScrolling" "true"
-        EndSection
-      '';
     };
   };
 
