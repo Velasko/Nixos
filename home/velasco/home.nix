@@ -1,5 +1,6 @@
 { environment, username, pkgs, ... }: {
   imports = [
+    ./modules/xremap.nix
     ./modules/gitconfig.nix
     ./modules/shell.nix
     ./modules/stylix.nix
