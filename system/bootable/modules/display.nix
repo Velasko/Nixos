@@ -1,8 +1,10 @@
 { username, pkgs, ... }: {
+  imports = [
+    ./kde.nix
+  ];
+
   services.displayManager.autoLogin.user = "${username}";
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.autoLogin.enable = false;
   services.dbus.enable = true;
 
   xdg.portal.enable = true;
@@ -14,12 +16,6 @@
     xkb.layout = "br";
     enable = true;
   };
-
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
-    oxygen
-    kate
-  ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSOR = "1";
