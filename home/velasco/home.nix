@@ -4,6 +4,7 @@
     ./modules/shell.nix
     ./modules/stylix.nix
     ./modules/programming.nix
+    ./modules/firefox.nix
     ./environments/${environment}.nix
   ];
 
@@ -11,7 +12,6 @@
   programs.lazygit.enable = true;
   home.packages = with pkgs; [
     curl
-    firefox
     gnutar
     gzip
     wget
