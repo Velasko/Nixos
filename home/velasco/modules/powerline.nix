@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... } :
+{ pkgs, config, lib, ... }:
 let
   termBG = config.lib.stylix.colors.base00;
   userBG = config.lib.stylix.colors.base03;
@@ -15,7 +15,8 @@ let
   separator = "[](bold fg:#${config.lib.stylix.colors.base03} bg:#${barBG})";
   language_style = "bold bg:#${barBG} fg:#${langFG}";
   language_format = "${separator}[ $symbol ($version) ]($style)";
-in {
+in
+{
   programs.starship.enableZshIntegration = true;
   programs.starship.enable = true;
   programs.starship.settings = {
@@ -57,15 +58,15 @@ in {
 
     directory = {
       style = "bold bg:#${barBG} fg:#${pathFG}";
-    	format = "[ $path ]($style)";
-    	truncation_length = 3;
-    	# truncation_symbol = "…/";
-    	substitutions = {
-    		"Documents" = "󰈙 ";
-    		"Downloads" = " ";
-    		"Music" = " ";
-    		"Pictures" = " ";
-    	};
+      format = "[ $path ]($style)";
+      truncation_length = 3;
+      # truncation_symbol = "…/";
+      substitutions = {
+        "Documents" = "󰈙 ";
+        "Downloads" = " ";
+        "Music" = " ";
+        "Pictures" = " ";
+      };
     };
 
     docker_context = {
@@ -80,12 +81,12 @@ in {
     };
 
     git_status = {
-        ahead = "⇡\${count}";
-        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-        behind = "⇣\${count}";
-        up_to_date = "✓ ";
-        style = "bold fg:#${gitStatusFG} bg:#${barBG}";
-        format = "[ $all_status$ahead_behind ]($style)";
+      ahead = "⇡\${count}";
+      diverged = "⇕ ⇡ \${ahead_count} ⇣ \${behind_count}";
+      behind = "⇣ \${count}";
+      up_to_date = "✓ ";
+      style = "bold fg:#${gitStatusFG} bg:#${barBG}";
+      format = "[ $all_status$ahead_behind ]($style)";
     };
 
     rust = {
