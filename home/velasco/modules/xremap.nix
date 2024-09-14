@@ -9,9 +9,7 @@
       {
         name = "main remaps";
         remap = {
-          super-y = {
-            launch = [ "firefox" ];
-          };
+          super-f = "Super-KEY_PAGEUP"; # full screen on kde
         };
       }
     ];
