@@ -66,7 +66,6 @@
       channel = "https://channels.nixos.org/nixos-${config.system.stateVersion}";
     };
     activationScripts.binbash = {
-      deps = [ pkgs.bask ];
       text = "ln -s ${pkgs.bash}/bin/bash /bin/bash";
     };
   };
