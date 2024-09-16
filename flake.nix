@@ -14,7 +14,7 @@
 
     dotfiles = {
       flake = false;
-      url = "github:velasko/dotfiles";
+      url = "git+https://github.com/Velasko/dotfiles?submodules=1";
     };
     github-keys = {
       flake = false;
