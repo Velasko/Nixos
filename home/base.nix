@@ -27,4 +27,6 @@
       libsecret
     ];
   };
+
+  programs.steam.enable = environment != "work";
 }
