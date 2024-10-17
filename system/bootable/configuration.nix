@@ -36,6 +36,8 @@ in
       forceImportRoot = true;
     };
 
+    tmp.tmpfsSize = "75%";
+
     loader = {
       grub = {
         enable = !config.boot.loader.systemd-boot.enable;
@@ -58,6 +60,13 @@ in
         canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
         efiSysMountPoint = "/boot";
       };
+
+      boot.kernelParams = [
+        "zswap.enabled=1"
+        "zswap.compressor=lz4"
+        "zswap.max_pool_percent=50"
+        "zswap.zpool=z3fold"
+      ];
     };
 
     binfmt.registrations.appimage = {
