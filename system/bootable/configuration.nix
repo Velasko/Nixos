@@ -64,10 +64,9 @@ in
 
     kernelParams = [
       "zswap.enabled=1"
-      "zswap.compressor=lz4"
-      "zswap.max_pool_percent=50"
-      "zswap.zpool=z3fold"
     ];
+
+    kernelModules = [ "lz4" "z3fold" ];
 
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -77,6 +76,16 @@ in
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
+  };
+
+  systemd.services.zswap-configure = {
+    description = "Configure zswap";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      echo lz4 > /sys/module/zswap/parameters/compressor
+      echo z3fold > /sys/module/zswap/parameters/zpool
+    '';
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
