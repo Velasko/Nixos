@@ -29,6 +29,7 @@
     clean.extraArgs = "--keep-since 1d --keep 3";
   };
 
+  # programs.steam.enable = true;
   programs = {
     zsh.enable = true;
     nix-ld.enable = true;
