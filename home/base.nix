@@ -21,7 +21,7 @@
     home.stateVersion = config.system.stateVersion;
     home.username = "${username}";
 
-	gtk.enable = lib.mkforce false;
+	gtk.enable = lib.mkForce false;
 
     fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
