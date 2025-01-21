@@ -7,6 +7,8 @@ let
   machine = (machines."id_${machine-id}" or "unknown");
 
   disk-type = if ! virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
+
+  # swapfile_config = { device = "/swapfile"; size = 8 * 1024; };
 in
 {
   imports = [
@@ -78,14 +80,34 @@ in
     };
   };
 
-  systemd.services.zswap-configure = {
-    description = "Configure zswap";
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "oneshot";
-    script = ''
-      echo lz4 > /sys/module/zswap/parameters/compressor
-      echo z3fold > /sys/module/zswap/parameters/zpool
-    '';
+  # swapDevices = [ swapfile_config ];
+  systemd = {
+	  services = {
+		  zswap-configure = {
+			description = "Configure zswap";
+			wantedBy = [ "multi-user.target" ];
+			serviceConfig.Type = "oneshot";
+			script = ''
+			  echo lz4 > /sys/module/zswap/parameters/compressor
+			  echo z3fold > /sys/module/zswap/parameters/zpool
+			'';
+		  };
+			# 	  swapfile-configure = {
+			# description = "Create swapfile";
+			# serviceConfig.Type = "oneshot";
+			# wantedBy = [ "swapfile.swap" ];
+			# script = ''
+			# 	mkswap -U clear --size 8192 --file ${swapfile_config.device}
+			# '';
+			# 	  };
+	  };
+	  sleep.extraConfig = ''
+		  AllowSuspend=yes
+		  AllowHibernation=no
+		  AllowHybridSleep=no
+		  AllowSuspendThenHibernate=no
+		  SuspendState=mem
+	  '';
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
