@@ -8,7 +8,6 @@ let
 
   disk-type = if ! virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
 
-  # swapfile_config = { device = "/swapfile"; size = 8 * 1024; };
 in
 {
   imports = [
@@ -80,7 +79,6 @@ in
     };
   };
 
-  # swapDevices = [ swapfile_config ];
   systemd = {
 	  services = {
 		  zswap-configure = {
@@ -103,21 +101,14 @@ in
 				'');
 			  };
 			};
-			# 	  swapfile-configure = {
-			# description = "Create swapfile";
-			# serviceConfig.Type = "oneshot";
-			# wantedBy = [ "swapfile.swap" ];
-			# script = ''
-			# 	mkswap -U clear --size 8192 --file ${swapfile_config.device}
-			# '';
-			# 	  };
 	  };
 	  sleep.extraConfig = ''
-		  AllowSuspend=yes
-		  AllowHibernation=no
-		  AllowHybridSleep=no
-		  AllowSuspendThenHibernate=no
-		  SuspendState=mem
+		AllowSuspend=yes
+		AllowHibernation=yes
+		AllowHybridSleep=yes
+		AllowSuspendThenHibernate=yes
+		HibernateDelaySec=30s
+		SuspendState=mem
 	  '';
   };
 
