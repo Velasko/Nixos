@@ -12,7 +12,7 @@
 	boot.initrd.kernelModules = [ ];
 	boot.kernelModules = [ "kvm-intel" ];
 	boot.extraModulePackages = [ ];
-	boot.kernelParams = [ "acpi_osi=!" "acpi_osi=\"Windows 2022\"" ];
+	boot.kernelParams = [ "acpi_osi=!" "\"acpi_osi=Windows 2022\"" ];
 
 
 	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
