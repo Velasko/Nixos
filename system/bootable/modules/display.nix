@@ -31,7 +31,7 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;

@@ -6,5 +6,9 @@
   stylix.image = ../../../home/${username}/wallpaper.png;
   stylix.polarity = "dark";
   stylix.enable = true;
+
+	#stylix.targets.btop.enable = true;
+	#stylix.targets.lazygit.enable = true;
+	#stylix.targets.alacritty.enable = true;
 }
 

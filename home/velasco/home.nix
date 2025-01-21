@@ -1,11 +1,9 @@
 { environment, username, pkgs, ... }: {
   imports = [
-    ./modules/xremap.nix
     ./modules/gitconfig.nix
-    ./modules/shell.nix
-    ./modules/stylix.nix
+	./modules/shell.nix
+	./modules/stylix.nix
     ./modules/programming.nix
-    ./modules/firefox.nix
     ./environments/${environment}.nix
   ];
 
@@ -17,4 +15,14 @@
     gzip
     wget
   ];
+
+  programs.nh.enable = true;
+
+  programs.firefox = {
+	enable = true;
+	policies ={
+	  DNSOverHTTPS = true;
+	};
+  };
+
 }
