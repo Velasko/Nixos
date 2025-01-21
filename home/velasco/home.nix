@@ -16,8 +16,6 @@
     wget
   ];
 
-  programs.nh.enable = true;
-
   programs.firefox = {
 	enable = true;
 	policies ={
