@@ -40,10 +40,11 @@ in
     tmp.tmpfsSize = "75%";
 
     loader = {
+	  timeout = 1;
       grub = {
         enable = !config.boot.loader.systemd-boot.enable;
         useOSProber = true;
-        configurationLimit = 10;
+        configurationLimit = 3;
         efiSupport = true;
         zfsSupport = true;
         efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
