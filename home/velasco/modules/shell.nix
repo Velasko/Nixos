@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ inputs, pkgs, config, lib, ... }: {
   imports = [ ./powerline.nix ];
 
   programs.alacritty = {
@@ -22,9 +22,9 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-		nix-update = "(cd ~/Nixos && nix flake update --commit-lock-file)";
-		nix-rebuild = "sudo nixos-rebuild --flake ~/Nixos#main";
-		nix-clean = "nix-store --gc && nix-collect-garbage --delete old && sudo nix-collect-garbage -d";
+		nix-update = "(cd ${inputs.self.outPath} && nix flake update --commit-lock-file)";
+		nix-rebuild = "sudo nixos-rebuild --flake ${inputs.self.outPath}#main";
+		nix-clean = "nix-store --gc && nix-collect-garbage --delete-old && sudo nix-collect-garbage -d";
     };
 
     history = {
