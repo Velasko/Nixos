@@ -4,6 +4,7 @@
 	./modules/shell.nix
 	./modules/stylix.nix
     ./modules/programming.nix
+	./modules/xremap.nix
     ./environments/${environment}.nix
   ];
 
