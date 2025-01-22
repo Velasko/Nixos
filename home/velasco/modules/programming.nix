@@ -32,6 +32,7 @@ in
     # Dependencies
     gcc
     nodejs_22
+	ripgrep # telescope dependency for file searching
   ];
 
   home.sessionVariables = {
