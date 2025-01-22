@@ -1,8 +1,6 @@
 { inputs, config, lib, pkgs, username, ... }:
 {
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
-    optimise.automatic = true;
   };
 
   time.timeZone = "America/Sao_Paulo";
@@ -22,12 +20,6 @@
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 1d --keep 3";
-  };
 
   programs = {
     zsh.enable = true;
@@ -59,12 +51,40 @@
     etc.nixenv.text = if config.networking.dhcpcd.extraConfig == "noarp" then "true" else "false";
   };
 
+  nix = {
+    optimise.automatic = true;
+	settings = {
+		experimental-features = [ "nix-command" "flakes" ];
+		auto-optimise-store = true;
+	};
+	gc = {
+		automatic = true;
+		persistent = true;
+		dates = "weekly";
+		options = "--delete-older-than 7d";
+	};
+  };
+
+  # programs.nh = {
+  #   enable = true;
+  #   clean.enable = true;
+  #   clean.extraArgs = "--keep-since 1d --keep 3";
+  # };
+
   system = {
     stateVersion = "24.11";
     autoUpgrade = {
       enable = true;
+      persistent = true;
+      dates = "weekly";
+      flags = [
+        "--commit-lock-file"
+        "-L" # print build logs
+      ];
+      flake = inputs.self.outPath;
+	  # channel = "https://channels.nixos.org/nixos-${config.system.stateVersion}";
       allowReboot = false;
-      channel = "https://channels.nixos.org/nixos-${config.system.stateVersion}";
+      operation = "boot";
     };
     activationScripts.binbash = {
       text = "ln -sfn ${pkgs.bash}/bin/bash /bin/bash";

@@ -112,19 +112,6 @@ in
 	  '';
   };
 
-  nix = {
-	settings = {
-		auto-optimise-store = true;
-		system-features = [ "kvm" ];
-	};
-	gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 7d";
-		persistent = true;
-	};
-  };
-
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   powerManagement.cpufreq.min = 41000;
 
