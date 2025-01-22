@@ -55,6 +55,7 @@
     systemPackages = with pkgs; [
       git
     ];
+	pathsToLink = [ "/share/zsh" ];
     etc.nixenv.text = if config.networking.dhcpcd.extraConfig == "noarp" then "true" else "false";
   };
 
