@@ -22,7 +22,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-		nix-update = "(cd ~/Nixos && nix flake update && git commit flake.lock -m \"Updating flake.lock\")";
+		nix-update = "(cd ~/Nixos && nix flake update --commit-lock-file)";
 		nix-rebuild = "sudo nixos-rebuild --flake ~/Nixos#main";
 		nix-clean = "nix-store --gc && nix-collect-garbage --delete old && sudo nix-collect-garbage -d";
     };
