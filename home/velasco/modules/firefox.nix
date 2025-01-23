@@ -52,7 +52,7 @@
         };
         # BetterTTV
         "firefox@betterttv.net" = {
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/betterttv/latest.xpi";
         };
       };
