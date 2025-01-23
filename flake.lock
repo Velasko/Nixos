@@ -106,7 +106,7 @@
     "cpu-info": {
       "flake": false,
       "locked": {
-        "lastModified": 1737551716,
+        "lastModified": 1737595692,
         "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
         "path": "/proc/cpuinfo",
         "type": "path"
@@ -957,11 +957,11 @@
         "tinted-tmux": "tinted-tmux"
       },
       "locked": {
-        "lastModified": 1736955352,
-        "narHash": "sha256-VujiBKJYM32b7HZEVO3Txla989lE7HMNGhVomLtguB0=",
+        "lastModified": 1737585583,
+        "narHash": "sha256-lU00TEdqCCWJNtMbR0l779xRJHtMf5FKCGKcsC+/Hr8=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "ef93972237a82cc340e804a1d2d4140ad65fe81d",
+        "rev": "9409ae8a925aacc7ea9a794e0bde159b876572a3",
         "type": "github"
       },
       "original": {
