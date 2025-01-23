@@ -106,7 +106,7 @@
     "cpu-info": {
       "flake": false,
       "locked": {
-        "lastModified": 1737595692,
+        "lastModified": 1737596647,
         "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
         "path": "/proc/cpuinfo",
         "type": "path"
