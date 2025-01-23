@@ -18,6 +18,7 @@
       OfferToSaveLogins = false;
       SearchBar = "unified"; # alternative: "separate"
       SearchSuggestEnabled = true;
+	  # about:support to get ids
       ExtensionSettings = {
         # uBlock Origin
         "uBlock0@raymondhill.net" = {
@@ -40,7 +41,7 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/simple-tab-groups/latest.xpi";
         };
         # Google Keyboard shortcuts
-        "GoogleKBshortcuts@Jacob" = {
+        "{c7812b2a-ab08-475a-806d-326718a58747}" = {
           installation_mode = "normal_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/google-search-result-shortcuts/latest.xpi";
         };
