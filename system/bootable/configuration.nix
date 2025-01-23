@@ -44,7 +44,7 @@ in
       grub = {
         enable = !config.boot.loader.systemd-boot.enable;
         useOSProber = true;
-        configurationLimit = 3;
+        configurationLimit = config.boot.loader.systemd-boot.configurationLimit;
         efiSupport = true;
         zfsSupport = true;
         efiInstallAsRemovable = !config.boot.loader.systemd-boot.enable;
