@@ -1,4 +1,9 @@
-{ pkgs, .. }: {
-	wayland.windowManager.hyprland.enable = true;
+{ pkgs, ... }: {
+	imports = [ ./waybar.nix ];
 
+
+	wayland.windowManager.hyprland = {
+		enable = true;
+		settings.input.kb_layout = true;
+	};
 }
