@@ -1,6 +1,6 @@
 { username, pkgs, ... }: {
   imports = [
-    ./kde.nix
+    ./hyperland.nix
   ];
 
   services.displayManager.autoLogin.user = "${username}";
