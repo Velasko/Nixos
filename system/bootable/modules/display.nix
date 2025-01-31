@@ -1,6 +1,5 @@
 { username, pkgs, ... }: {
   imports = [
-    ./hyperland.nix
   ];
 
   services.displayManager.autoLogin.user = "${username}";
