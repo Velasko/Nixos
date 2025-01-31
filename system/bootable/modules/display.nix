@@ -1,5 +1,6 @@
 { username, pkgs, ... }: {
   imports = [
+	./kde.nix
   ];
 
   services.displayManager.autoLogin.user = "${username}";
