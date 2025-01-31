@@ -29,6 +29,8 @@ in
     # rustup
     rust-analyzer
 
+	nil
+
     # Dependencies
     gcc
     nodejs_22
