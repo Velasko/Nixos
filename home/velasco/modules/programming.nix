@@ -29,6 +29,7 @@ in
     # rustup
     rust-analyzer
 
+	# nix programming
 	nil
 
     # Dependencies
