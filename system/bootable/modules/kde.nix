@@ -6,8 +6,8 @@
 	wayland.enable = true;
   };
 
-  programs.hyprland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  programs.hyprland.enable = false;
+  services.desktopManager.plasma6.enable = false;
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     konsole

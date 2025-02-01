@@ -9,6 +9,7 @@
   services.dbus.enable = true;
 
   xdg.portal.enable = true;
+  xdg.portal.config.common.default = "*";
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
   ];
@@ -24,6 +25,9 @@
       enable = true;
       xkb.layout = "br";
       exportConfiguration = true;
+
+      displayManager.gdm.enable = false;
+      desktopManager.gnome.enable = false;
     };
   };
 
