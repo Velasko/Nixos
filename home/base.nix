@@ -21,7 +21,9 @@
     home.stateVersion = config.system.stateVersion;
     home.username = "${username}";
 
-	gtk.enable = lib.mkForce false;
+	# If kde is on -> annoying files interrupts the build
+	# If gtk is off -> gtk apps don't follow stylix themes
+	gtk.enable = lib.mkForce (!config.services.desktopManager.plasma6.enable);
 
     fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
