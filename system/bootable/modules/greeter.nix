@@ -10,7 +10,7 @@
 	};
 
 	# hiding boot messages
-	systemd.servces.greetd.serviceConfig = {
+	systemd.services.greetd.serviceConfig = {
 		Type = "idle";
 		StandardInput = "tty";
 		StandardOutput = "tty";
