@@ -30,5 +30,6 @@
     ];
   };
 
+  programs.dconf.enable = true;
   programs.steam.enable = environment != "work";
 }
