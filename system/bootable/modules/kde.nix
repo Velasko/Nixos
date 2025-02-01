@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.displayManager.sddm = {
-    enable = true;
+    enable = false;
     autoNumlock = true;
 	wayland.enable = true;
   };
