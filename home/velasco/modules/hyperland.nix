@@ -1,19 +1,7 @@
-{ inputs, pkgs, lib, username, ... }: let
-wallpaper = pkgs.fetchurl {
-	url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/village.jpg";
-	hash = "sha256-t3ItqKeewcpGLoyFG4ch23stzGpaujFfANM++Aj3SDM";
-};
-in {
+{ inputs, pkgs, lib, username, ... }: {
 	imports = [ ./waybar.nix ];
 
-	services.hyprpaper = {
-		enable = true;
-		settings = {
-			wallpaper = [",${builtins.toString wallpaper}"];
-			preload = [ ( builtins.toString wallpaper ) ];
-		};
-	};
-
+	home.packages = with pkgs; [ libpng ];
 
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -24,6 +12,7 @@ in {
 			exec-once = [
 				"${pkgs.waybar}/bin/waybar"
 				"${pkgs.hyprpaper}/bin/hyprpaper"
+				"${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
 			];
 
 			input.kb_layout = "br";
@@ -36,5 +25,4 @@ in {
 			];
 		};
 	};
-
 }
