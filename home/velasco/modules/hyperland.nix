@@ -1,7 +1,7 @@
 { inputs, pkgs, lib, username, ... }: {
 	imports = [ ./waybar.nix ];
 
-	home.packages = with pkgs; [ libpng eww ];
+	home.packages = with pkgs; [ libpng eww yazi dolphin ];
 
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -22,6 +22,8 @@
 				kb_layout = "br";
 				touchpad.natural_scroll = true;
 			};
+			
+			monitor = [", preferred, auto, 1"];
 
 			"$super" = "SUPER";
 
