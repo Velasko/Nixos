@@ -5,6 +5,7 @@
     bitwarden-desktop
     bitwarden-cli
     discord
+	openvpn
     spotify
     telegram-desktop
     vesktop
