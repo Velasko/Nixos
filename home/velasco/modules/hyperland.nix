@@ -1,7 +1,10 @@
 { inputs, pkgs, lib, username, ... }: {
-	imports = [ ./waybar.nix ];
+	imports = [
+		./waybar.nix
+		./yazi.nix
+	];
 
-	home.packages = with pkgs; [ libpng eww yazi dolphin ];
+	home.packages = with pkgs; [ libpng eww dolphin ];
 
 	wayland.windowManager.hyprland = {
 		enable = true;
