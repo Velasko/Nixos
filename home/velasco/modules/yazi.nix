@@ -1,12 +1,12 @@
 { pkgs, ... }: {
+	programs.yazi.enable = true;
+	
+	#UX dependencies
 	home.packages = with pkgs; [ 
-		yazi
-
-		#dependencies
-		# ffmpeg
-		# p7zip
-		# jq
-		# poppler
-		# imagemagick
+		ffmpeg
+		p7zip
+		jq
+		poppler
+		imagemagick
 	];
 }
