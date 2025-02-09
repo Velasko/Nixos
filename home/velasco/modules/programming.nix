@@ -9,7 +9,7 @@ in
 	home.packages = with pkgs; [
 		# env/shell/utils
 		autojump
-		# direnv
+		direnv
 		lazygit
 		micro
 		neovim
