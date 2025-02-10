@@ -29,8 +29,13 @@
       monitor = [ ", preferred, auto, 1" ];
 
       "$super" = "SUPER";
+      "$ssuper" = "SUPER SHIFT";
 
       bind = import ./hyprlandbinds.nix { inherit pkgs; };
+      bindm = [
+        "$super, mouse:273, resizewindow"
+        "$super, mouse:272, movewindow"
+      ];
 
       misc = {
         force_default_wallpaper = 0;
