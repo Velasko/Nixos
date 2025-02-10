@@ -8,6 +8,7 @@
 		openvpn
 		spotify
 		telegram-desktop
+		torzu
 		vesktop
 		unzip
 		vlc
