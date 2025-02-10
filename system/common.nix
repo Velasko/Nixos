@@ -21,6 +21,7 @@
 	programs = {
 		zsh.enable = true;
 		nix-ld.enable = true;
+		firejail.enable = true;
 	};
 
 	users.users."${username}" = {
