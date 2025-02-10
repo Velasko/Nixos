@@ -1,10 +1,10 @@
 { environment, username, pkgs, ... }: {
   imports = [
     ./modules/gitconfig.nix
-	./modules/shell.nix
-	./modules/stylix.nix
+    ./modules/shell.nix
+    ./modules/stylix.nix
     ./modules/programming.nix
-	./modules/xremap.nix
+    ./modules/xremap.nix
     ./environments/${environment}.nix
   ];
 
@@ -18,10 +18,10 @@
   ];
 
   programs.firefox = {
-	enable = true;
-	policies ={
-	  DNSOverHTTPS = true;
-	};
+    enable = true;
+    policies = {
+      DNSOverHTTPS = true;
+    };
   };
 
 }
