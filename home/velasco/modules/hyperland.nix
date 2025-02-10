@@ -30,6 +30,7 @@
 
       "$super" = "SUPER";
 
+      bind = import ./hyprlandbinds.nix { inherit pkgs; };
 
       misc = {
         force_default_wallpaper = 0;
