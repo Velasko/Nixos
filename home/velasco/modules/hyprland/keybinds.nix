@@ -6,7 +6,7 @@
   "shift super, L, exit,"
   "super, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
   "super, P, pin,"
-  "control, Q, killactive"
+  "super, Q, killactive"
   "super, R, exec, ${pkgs.rofi}/bin/rofi -show run"
   "super, T, exec, ${pkgs.alacritty}/bin/alacritty"
 
