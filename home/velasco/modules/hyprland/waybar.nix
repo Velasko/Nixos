@@ -186,15 +186,16 @@ in
           };
           calendar = {
             format = {
-              days = "<span color='#${color.base0C}'><b>{}</b></span>";
-              months = "<span color='#${color.base08}'><b>{}</b></span>";
-              today = "<span color='#${color.base08}'><b><u>{}</u></b></span>";
+              days = "<span color='#${color.base03}'><b>{}</b></span>";
+              months = "<span color='#${color.base07}'><b>{}</b></span>";
+              today = "<span color='#${color.base07}'><b><u>{}</u></b></span>";
               weekdays = "<span color='#${color.base0B}'><b>{}</b></span>";
             };
             mode = "month";
             on-scroll = 1;
           };
-          format = "{:%H:%M}";
+          format = "{:%a, %b %d %R}";
+          format-alt = "{:%Y/%m/%d %R}";
           tooltip-format = "{calendar}";
         };
 
@@ -245,6 +246,7 @@ in
       /* Global */
       * {
         all: unset;
+        font-family: "Inconsolata Nerd Font", sans-serif;
         font-size: 11pt;
         font-weight: 500;
       }
@@ -363,7 +365,7 @@ in
       }
 
       #workspaces button label {
-        color: #${color.base08};
+        color: #${color.base07};
       }
 
       #workspaces button.empty label {
@@ -376,7 +378,7 @@ in
       }
 
       #workspaces button.urgent {
-        background: #${color.base08};
+        background: #${color.base07};
       }
 
       #workspaces button.active {
@@ -400,7 +402,7 @@ in
 
       #tray > .needs-attention {
         -gtk-icon-effect: highlight;
-        background: #${color.base08};
+        background: #${color.base07};
       }
 
       /* Hover effects */
@@ -412,7 +414,7 @@ in
       }
 
       #workspaces button.urgent:hover {
-        background: lighter(#${color.base08});
+        background: lighter(#${color.base07});
       }
 
       #workspaces button.active:hover,
