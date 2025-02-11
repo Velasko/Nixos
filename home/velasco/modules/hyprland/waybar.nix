@@ -125,9 +125,9 @@ in
         "backlight#icon" = {
           format = "{icon}";
           format-icons = [
-            "󰃞"
-            "󰃟"
-            "󰃠"
+            "󰃞 "
+            "󰃟 "
+            "󰃠 "
           ];
           on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 1%+ &> /dev/null";
           on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 1%- &> /dev/null";
@@ -194,8 +194,8 @@ in
             mode = "month";
             on-scroll = 1;
           };
-          format = "{:%a, %b %d %R}";
-          format-alt = "{:%Y/%m/%d %R}";
+          format = " {:%a, %b %d %R} ";
+          format-alt = " {:%Y/%m/%d %R} ";
           tooltip-format = "{calendar}";
         };
 
