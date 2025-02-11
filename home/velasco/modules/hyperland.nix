@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, username, ... }: {
+{ inputs, pkgs, config, lib, username, ... }: {
   imports = [
     ./waybar.nix
     ./yazi.nix
