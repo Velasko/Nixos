@@ -6,6 +6,7 @@
     ./hyprlock.nix
     ./hyprsunset.nix
     ./polkit-agent.nix
+    ./rofi.nix
   ];
 
   home.packages = with pkgs; [ ];
