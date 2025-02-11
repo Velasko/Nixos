@@ -10,7 +10,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     stylix.url = "github:danth/stylix/release-24.11";
-	xremap.url = "github:xremap/nix-flake";
+    xremap.url = "github:xremap/nix-flake";
 
     dotfiles = {
       flake = false;
@@ -56,7 +56,7 @@
               specialArgs = { inherit inputs stylix username environment machines; };
               modules = [
                 ./system/main.nix
-				./home/base.nix
+                ./home/base.nix
               ];
             };
           };
