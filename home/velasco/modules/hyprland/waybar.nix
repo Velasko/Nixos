@@ -221,7 +221,7 @@ in
         };
         "custom/lock" = {
           format = "󰌾";
-          on-click = "${pkgs.hyprlock}/bin/hyprlock";
+          on-click = "${pkgs.systemd}/bin/loginctl lock-session";
           tooltip = false;
         };
         "custom/suspend" = {
