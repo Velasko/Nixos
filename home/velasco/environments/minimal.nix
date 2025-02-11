@@ -1,4 +1,4 @@
 { ... }: {
-  imports = [ ../modules/hyperland.nix ];
+  imports = [ ../modules/hyprland ];
 }
 
