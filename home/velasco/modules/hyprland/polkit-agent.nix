@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  systemd.user.services.gnome.gnome-keyring.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     Unit = {
       PartOf = [ "graphical-session.target" ];

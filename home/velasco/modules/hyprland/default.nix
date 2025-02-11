@@ -24,6 +24,7 @@
         "${pkgs.hyprpaper}/bin/hyprpaper" # wallpaper
         "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator" # wifi manager tray
         "${pkgs.swaynotificationcenter}/bin/swaync"
+        "${pkgs.systemd}/bin/systemctl --user start polkit-gnome-authentication-agent-1.service"
       ];
 
       input = {
