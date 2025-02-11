@@ -186,15 +186,15 @@ in
           };
           calendar = {
             format = {
-              days = "<span color='#${color.base0B}'><b>{}</b></span>";
+              days = "<span color='#${color.base0C}'><b>{}</b></span>";
               months = "<span color='#${color.base08}'><b>{}</b></span>";
               today = "<span color='#${color.base08}'><b><u>{}</u></b></span>";
-              weekdays = "<span color='#${color.base0C}'><b>{}</b></span>";
+              weekdays = "<span color='#${color.base0B}'><b>{}</b></span>";
             };
             mode = "month";
             on-scroll = 1;
           };
-          format = "{:%I:%M %p}";
+          format = "{:%H:%M}";
           tooltip-format = "{calendar}";
         };
 
@@ -346,7 +346,7 @@ in
       #custom-suspend,
       #custom-reboot,
       #custom-power {
-        background: #${color.base0C};
+        background: #${color.base0B};
         color: #${color.base02};
         border-radius: 8px;
         font-size: 13pt;
@@ -380,13 +380,13 @@ in
       }
 
       #workspaces button.active {
-        background: #${color.base0C};
+        background: #${color.base0B};
       }
 
       /* Idle Inhibitor */
       #idle_inhibitor {
         background: #${color.base02};
-        color: #${color.base0C};
+        color: #${color.base0B};
       }
 
       #idle_inhibitor.deactivated {
@@ -423,7 +423,7 @@ in
       #custom-suspend:hover,
       #custom-reboot:hover,
       #custom-power:hover {
-        background: lighter(#${color.base0C});
+        background: lighter(#${color.base0B});
       }
 
       #workspaces button.urgent:hover label,
@@ -447,7 +447,7 @@ in
       }
 
       #idle_inhibitor:hover {
-        color: lighter(#${color.base0C});
+        color: lighter(#${color.base0B});
       }
 
       #idle_inhibitor.deactivated:hover {
