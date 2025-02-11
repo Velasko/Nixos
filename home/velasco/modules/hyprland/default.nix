@@ -31,7 +31,7 @@
 
       monitor = [ ", preferred, auto, 1" ];
 
-      bind = import ./hyprlandbinds.nix { inherit pkgs; };
+      bind = import ./keybinds.nix { inherit pkgs; };
       bindm = [
         "super, mouse:273, resizewindow"
         "super, mouse:272, movewindow"
