@@ -6,6 +6,7 @@
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
       DNSOverHTTPS = true;
+      OfferToSaveLogins = false;
       EnableTrackingProtection = {
         Value = true;
         Locked = true;
@@ -18,7 +19,7 @@
       OfferToSaveLogins = false;
       SearchBar = "unified"; # alternative: "separate"
       SearchSuggestEnabled = true;
-	  # about:support to get ids
+      # about:support to get ids
       ExtensionSettings = {
         # uBlock Origin
         "uBlock0@raymondhill.net" = {
