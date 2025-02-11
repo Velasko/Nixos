@@ -2,7 +2,8 @@
   # Base functionaliny
   "super, page_up, fullscreen" # super + F (xremap)
   "super shift, page_up, togglefloating" # super + shift + F (xremap)
-  "super, L, exit,"
+  "super, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+  "shift super, L, exit,"
   "super, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
   "super, P, pin,"
   "control, Q, killactive"
