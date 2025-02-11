@@ -4,7 +4,7 @@
     ./yazi.nix
   ];
 
-  home.packages = with pkgs; [ libpng eww dolphin ];
+  home.packages = with pkgs; [ ];
 
   wayland.windowManager.hyprland = {
     enable = true;
