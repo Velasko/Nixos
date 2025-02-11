@@ -106,7 +106,7 @@
     "cpu-info": {
       "flake": false,
       "locked": {
-        "lastModified": 1739249049,
+        "lastModified": 1739249818,
         "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
         "path": "/proc/cpuinfo",
         "type": "path"
@@ -172,11 +172,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1738363361,
-        "narHash": "sha256-fdEfaTyFFp66xmqVGFUIfjPZXkjV9wDIm4ASH/EdLtc=",
+        "lastModified": 1739250360,
+        "narHash": "sha256-4Dpp1UZ39oGXVzlhcahPYEmYPhtt9j1npPyWDXkgHfc=",
         "ref": "refs/heads/main",
-        "rev": "f3ec9515f9477b956c33dce44584f5531731dcd1",
-        "revCount": 102,
+        "rev": "558a086d8da8042765c28a1b129513943e61392f",
+        "revCount": 103,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Velasko/dotfiles"
