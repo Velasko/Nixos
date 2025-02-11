@@ -40,7 +40,11 @@
         disable_hyprland_logo = true;
       };
 
-      workspace = [ "1, gapsout:0, gapsin:2" ];
+      general = {
+        gaps_out = 0;
+        gaps_in = 2;
+      };
+
     };
   };
 }
