@@ -10,7 +10,6 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     stylix.url = "github:danth/stylix/release-24.11";
-    xremap.url = "github:xremap/nix-flake";
 
     dotfiles = {
       flake = false;
