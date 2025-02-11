@@ -73,9 +73,9 @@ in
           orientation = "inherit";
         };
         "network#icon" = {
-          format-disconnected = "󰤮";
-          format-ethernet = "󰈀";
-          format-wifi = "󰤨";
+          format-disconnected = "󰤮 ";
+          format-ethernet = "󰈀 ";
+          format-wifi = "󰤨 ";
           tooltip-format-wifi = "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}";
           tooltip-format-ethernet = "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}";
           tooltip-format-disconnected = "Disconnected";
