@@ -20,7 +20,7 @@
       exec-once = [
         "${pkgs.hyprland}/bin/hyprctl setcursor ${config.stylix.cursor.name} ${builtins.toString config.stylix.cursor.size}"
         "${pkgs.hypridle}/bin/hypridle"
-        "${pkgs.waybar}/bin/waybar" # utility bar
+        "pidof ${pkgs.waybar}/bin/waybar || ${pkgs.waybar}/bin/waybar" # utility bar
         "${pkgs.hyprpaper}/bin/hyprpaper" # wallpaper
         "${pkgs.swaynotificationcenter}/bin/swaync"
         "${pkgs.systemd}/bin/systemctl --user start polkit-gnome-authentication-agent-1.service"
