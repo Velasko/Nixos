@@ -29,6 +29,7 @@
       input = {
         kb_layout = "br";
         touchpad.natural_scroll = true;
+        kb_options = [ "caps:swapescape" ];
       };
 
       monitor = [ ", preferred, auto, 1" ];
