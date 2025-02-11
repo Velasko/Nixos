@@ -12,6 +12,8 @@
     unzip
     vlc
     wine
+
+    kdePackages.okular
   ];
 
   home.sessionVariables = {
