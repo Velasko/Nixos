@@ -14,6 +14,7 @@
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
 
       exec-once = [
+        "${pkgs.hyprland}/bin/hyprctl setcursor ${config.stylix.cursor.name} ${builtins.toString config.stylix.cursor.size}"
         "${pkgs.waybar}/bin/waybar" # utility bar
         "${pkgs.hyprpaper}/bin/hyprpaper" # wallpaper
         "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator" # wifi manager tray
