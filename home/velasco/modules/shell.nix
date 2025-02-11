@@ -1,7 +1,8 @@
 { inputs, pkgs, config, lib, ... }:
-let 
-	config_path = "~/Nixos";
-in {
+let
+  config_path = "~/Nixos";
+in
+{
   imports = [ ./powerline.nix ];
 
   programs.alacritty = {
@@ -25,14 +26,14 @@ in {
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-		nix-update = "(cd ${config_path} && nix flake update --commit-lock-file)";
-		nix-rebuild = "sudo nixos-rebuild --flake ${config_path}#main";
-		nix-clean = "nix-store --gc && nix-collect-garbage --delete-old && sudo nix-collect-garbage -d";
-		mkenv = ''
-			makeDevEnvironment() {
-				nix flake init -t "github:the-nix-way/dev-templates#$1"
-			}; makeDevEnvironment() 
-		'';
+      nix-update = "(cd ${config_path} && nix flake update --commit-lock-file)";
+      nix-rebuild = "sudo nixos-rebuild --flake ${config_path}#main";
+      nix-clean = "nix-store --gc && nix-collect-garbage --delete-old && sudo nix-collect-garbage -d";
+      mkenv = ''
+        			makeDevEnvironment() {
+        				nix flake init -t "github:the-nix-way/dev-templates#$1"
+        			}; makeDevEnvironment() 
+        		'';
     };
 
     history = {
