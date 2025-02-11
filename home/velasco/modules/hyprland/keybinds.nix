@@ -11,14 +11,14 @@
   "super, T, exec, ${pkgs.alacritty}/bin/alacritty"
 
   # Arrow movement
-  "alt, Up, movefocus, u"
-  "alt, Left, movefocus, l"
-  "alt, Right, movefocus, r"
-  "alt, Down, movefocus, d"
-  "super alt, up, movewindow, u"
-  "super alt, Left, movewindow, l"
-  "super alt, Right, movewindow, r"
-  "super alt, Down, movewindow, d"
+  "super alt, Up, movefocus, u"
+  "super alt, Left, movefocus, l"
+  "super alt, Right, movefocus, r"
+  "super alt, Down, movefocus, d"
+  "super shift, Up, movewindow, u"
+  "super shift, Left, movewindow, l"
+  "super shift, Right, movewindow, r"
+  "super shift, Down, movewindow, d"
 
   # Application shortcuts
   "super, 1, exec, ${pkgs.alacritty}/bin/alacritty --class yazi -e ${pkgs.yazi}/bin/yazi"
