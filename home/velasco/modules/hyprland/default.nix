@@ -22,7 +22,6 @@
         "${pkgs.hypridle}/bin/hypridle"
         "${pkgs.waybar}/bin/waybar" # utility bar
         "${pkgs.hyprpaper}/bin/hyprpaper" # wallpaper
-        "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator" # wifi manager tray
         "${pkgs.swaynotificationcenter}/bin/swaync"
         "${pkgs.systemd}/bin/systemctl --user start polkit-gnome-authentication-agent-1.service"
       ];
