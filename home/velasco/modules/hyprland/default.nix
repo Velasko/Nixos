@@ -4,6 +4,7 @@
     ./yazi.nix
     ./hypridle.nix
     ./hyprlock.nix
+    ./hyprsunset.nix
     ./polkit-agent.nix
   ];
 
