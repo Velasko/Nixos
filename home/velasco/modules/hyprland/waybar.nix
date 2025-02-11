@@ -131,6 +131,7 @@ in
           ];
           on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 1%+ &> /dev/null";
           on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 1%- &> /dev/null";
+          on-click-right = "${pkgs.systemd}/bin/systemctl is-active hyprsunset --user --quiet && ${pkgs.systemd}/bin/systemctl --user stop hyprsunset --quiet || ${pkgs.systemd}/bin/systemctl --user start hyprsunset";
           tooltip-format = "Backlight: {percent}%";
         };
         "backlight#percent" = {
