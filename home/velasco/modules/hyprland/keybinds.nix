@@ -9,6 +9,7 @@
   "super, Q, killactive"
   "super, R, exec, ${pkgs.rofi}/bin/rofi -show run"
   "super, T, exec, ${pkgs.alacritty}/bin/alacritty"
+  "super shift, S, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy"
 
   # Arrow movement
   "super alt, Up, movefocus, u"
