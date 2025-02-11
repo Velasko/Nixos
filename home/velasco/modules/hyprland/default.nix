@@ -2,6 +2,9 @@
   imports = [
     ./waybar.nix
     ./yazi.nix
+    ./hypridle.nix
+    ./hyprlock.nix
+    ./polkit-agent.nix
   ];
 
   home.packages = with pkgs; [ ];
@@ -19,7 +22,6 @@
         "${pkgs.hyprpaper}/bin/hyprpaper" # wallpaper
         "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator" # wifi manager tray
         "${pkgs.swaynotificationcenter}/bin/swaync"
-        "systemctl --user start ${pkgs.hyprpolkitagent}/bin/hyprpolkitagent"
       ];
 
       input = {
