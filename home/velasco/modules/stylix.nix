@@ -9,12 +9,5 @@
   stylix.image = ../../../home/${username}/wallpaper.jpeg;
   stylix.polarity = "dark";
   stylix.enable = true;
-
-  stylix.targets = {
-    hyprland.enable = true;
-    hyprpaper.enable = true;
-    gtk.enable = true;
-    gnome.enable = true;
-  };
 }
 
