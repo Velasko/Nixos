@@ -41,9 +41,9 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/simple-tab-groups/latest.xpi";
         };
         # Google Keyboard shortcuts
-        "{c7812b2a-ab08-475a-806d-326718a58747}" = {
+        "{ffadac89-63bb-4b04-be90-8cb2aa323171}" = {
           installation_mode = "normal_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/google-search-result-shortcuts/latest.xpi";
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4117463/web_search_navigator-0.5.1.xpi";
         };
         # Enhancer for YouTube
         "enhancerforyoutube@maximerf.addons.mozilla.org" = {
