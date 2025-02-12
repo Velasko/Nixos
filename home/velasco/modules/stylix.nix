@@ -9,5 +9,15 @@
   stylix.image = ../../../home/${username}/wallpaper.jpeg;
   stylix.polarity = "dark";
   stylix.enable = true;
-}
 
+  stylix.fonts = {
+    sansSerif = {
+      package = pkgs.inconsolata-nerdfont;
+      name = "Inconsolata Nerd Font";
+    };
+    serif = config.stylix.fonts.sansSerif;
+    monospace = config.stylix.fonts.sansSerif;
+    emoji = config.stylix.fonts.sansSerif;
+  };
+
+}
