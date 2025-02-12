@@ -7,7 +7,7 @@
   "super, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
   "super, P, pin,"
   "super, Q, killactive"
-  "super, R, exec, ${pkgs.rofi}/bin/rofi -show run"
+  "super, R, exec, ${pkgs.rofi}/bin/rofi -show drun"
   "super, T, exec, ${pkgs.alacritty}/bin/alacritty"
   "super shift, S, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy"
 
