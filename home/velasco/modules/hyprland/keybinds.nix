@@ -1,9 +1,11 @@
 { pkgs, ... }: [
   # Base functionaliny
   "super, F, fullscreenstate, 1"
+  "super alt, F, fullscreen"
   "super shift, F, togglefloating"
-  "super, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
-  "shift super, L, exit,"
+  "super, L, exec, ${pkgs.systemd}/bin/loginctl lock-session"
+  "super shift, L, exec, ${pkgs.systemd}/bin/loginctl terminate-user $USER"
+  "super alt, L, exit,"
   "super, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
   "super, P, pin,"
   "super, Q, killactive"
