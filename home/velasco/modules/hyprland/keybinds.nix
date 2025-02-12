@@ -1,6 +1,6 @@
 { pkgs, ... }: [
   # Base functionaliny
-  "super, F, fullscreen"
+  "super, F, fullscreenstate, 1"
   "super shift, F, togglefloating"
   "super, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
   "shift super, L, exit,"
