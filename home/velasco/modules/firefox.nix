@@ -16,7 +16,6 @@
       DontCheckDefaultBrowser = false;
       DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "never"
       Homepage.StartPage = "previous-session";
-      OfferToSaveLogins = false;
       SearchBar = "unified"; # alternative: "separate"
       SearchSuggestEnabled = true;
       # about:support to get ids
