@@ -69,7 +69,7 @@
     "cpu-info": {
       "flake": false,
       "locked": {
-        "lastModified": 1739296245,
+        "lastModified": 1739421770,
         "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
         "path": "/proc/cpuinfo",
         "type": "path"
@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738765162,
-        "narHash": "sha256-3Z40qHaFScWUCVQrGc4Y+RdoPsh1R/wIh+AN4cTXP0I=",
+        "lastModified": 1739353546,
+        "narHash": "sha256-YTqXhBZvCdZLMBupWlCDvRFaTEhaHa2/Xc/p1sUdSZU=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "ff3568858c54bd306e9e1f2886f0f781df307dff",
+        "rev": "26ade1005191e0602a78b0f141970648445bafd9",
         "type": "github"
       },
       "original": {
@@ -102,11 +102,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1739250360,
-        "narHash": "sha256-4Dpp1UZ39oGXVzlhcahPYEmYPhtt9j1npPyWDXkgHfc=",
+        "lastModified": 1739412786,
+        "narHash": "sha256-M7RYGx8vsBRmYPrhV+sdJyNoENxXgLqyDHdefC1bqk8=",
         "ref": "refs/heads/main",
-        "rev": "558a086d8da8042765c28a1b129513943e61392f",
-        "revCount": 103,
+        "rev": "d090a3c6466abc400255ce67ddb8f4cfe980825e",
+        "revCount": 105,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Velasko/dotfiles"
@@ -440,11 +440,11 @@
         "tinted-tmux": "tinted-tmux"
       },
       "locked": {
-        "lastModified": 1738025311,
-        "narHash": "sha256-O0iFoytYpSxQdWeggIvrHjU5kmX/SRC9mcah9GbwlHk=",
+        "lastModified": 1739392863,
+        "narHash": "sha256-mU+aYnob+7Ycu/tU9oFoweIJwdjLj0uxcp+I1czH4DM=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "70505ba00ff09390b84cf50d52d48ee828727976",
+        "rev": "dfa4128b453d424c9fe3ef919776e722c0b766cb",
         "type": "github"
       },
       "original": {
