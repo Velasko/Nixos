@@ -40,7 +40,7 @@ in
     tmp.tmpfsSize = "75%";
 
     loader = {
-	  timeout = 1;
+      timeout = 1;
       grub = {
         enable = !config.boot.loader.systemd-boot.enable;
         useOSProber = true;
@@ -81,36 +81,36 @@ in
   };
 
   systemd = {
-	  services = {
-		  zswap-configure = {
-			description = "Configure zswap";
-			wantedBy = [ "multi-user.target" ];
-			serviceConfig.Type = "oneshot";
-			script = ''
-			  echo lz4 > /sys/module/zswap/parameters/compressor
-			  echo z3fold > /sys/module/zswap/parameters/zpool
-			'';
-		  };
-		  numLockOnTty = {
-			  wantedBy = [ "multi-user.target" ];
-			  serviceConfig = {
-				# /run/current-system/sw/bin/setleds -D +num < "$tty";
-				ExecStart = lib.mkForce (pkgs.writeShellScript "numLockOnTty" ''
-				  for tty in /dev/tty{1..6}; do
-					  ${pkgs.kbd}/bin/setleds -D +num < "$tty";
-				  done
-				'');
-			  };
-			};
-	  };
-	  sleep.extraConfig = ''
-		AllowSuspend=yes
-		AllowHibernation=yes
-		AllowHybridSleep=yes
-		AllowSuspendThenHibernate=yes
-		HibernateDelaySec=35m
-		SuspendState=mem
-	  '';
+    services = {
+      zswap-configure = {
+        description = "Configure zswap";
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig.Type = "oneshot";
+        script = ''
+          			  echo lz4 > /sys/module/zswap/parameters/compressor
+          			  echo z3fold > /sys/module/zswap/parameters/zpool
+          			'';
+      };
+      numLockOnTty = {
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          # /run/current-system/sw/bin/setleds -D +num < "$tty";
+          ExecStart = lib.mkForce (pkgs.writeShellScript "numLockOnTty" ''
+            				  for tty in /dev/tty{1..6}; do
+            					  ${pkgs.kbd}/bin/setleds -D +num < "$tty";
+            				  done
+            				'');
+        };
+      };
+    };
+    sleep.extraConfig = ''
+      		AllowSuspend=yes
+      		AllowHibernation=yes
+      		AllowHybridSleep=yes
+      		AllowSuspendThenHibernate=yes
+      		HibernateDelaySec=35m
+      		SuspendState=mem
+      	  '';
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
