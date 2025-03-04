@@ -17,6 +17,10 @@
       DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "never"
       Homepage.StartPage = "previous-session";
       SearchBar = "unified"; # alternative: "separate"
+      SearchEngines = {
+        Default = "DuckDuckGo";
+        PreventInstalls = true;
+      };
       SearchSuggestEnabled = true;
       # about:support to get ids
       ExtensionSettings = {
@@ -39,11 +43,6 @@
         "simple-tab-groups@drive4ik" = {
           installation_mode = "normal_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/simple-tab-groups/latest.xpi";
-        };
-        # Google Keyboard shortcuts
-        "{ffadac89-63bb-4b04-be90-8cb2aa323171}" = {
-          installation_mode = "normal_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4117463/web_search_navigator-0.5.1.xpi";
         };
         # Enhancer for YouTube
         "enhancerforyoutube@maximerf.addons.mozilla.org" = {
