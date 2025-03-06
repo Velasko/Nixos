@@ -17,6 +17,8 @@
     "mem_sleep_default=s2idle"
     "acpi_osi=!"
     "\"acpi_osi=Windows 2022\""
+    "acpi_enforce_resouces=lax"
+    "usbcore.autosuspend=-1"
   ];
   boot.blacklistedKernelModules = [ "ucsi_acpi" "typec_ucsi" ];
 
