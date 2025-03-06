@@ -18,6 +18,7 @@
     "acpi_osi=!"
     "\"acpi_osi=Windows 2022\""
   ];
+  boot.blacklistedKernelModules = [ "ucsi_acpi" "typec_ucsi" ];
 
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
