@@ -70,7 +70,7 @@
     "cpu-info": {
       "flake": false,
       "locked": {
-        "lastModified": 1741282765,
+        "lastModified": 1741426433,
         "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
         "path": "/proc/cpuinfo",
         "type": "path"
@@ -103,11 +103,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1739412786,
-        "narHash": "sha256-M7RYGx8vsBRmYPrhV+sdJyNoENxXgLqyDHdefC1bqk8=",
+        "lastModified": 1741427518,
+        "narHash": "sha256-n8W/ojl7i+RAf672PTgunbmOmlun72MEqg4gGF3SFrY=",
         "ref": "refs/heads/main",
-        "rev": "d090a3c6466abc400255ce67ddb8f4cfe980825e",
-        "revCount": 105,
+        "rev": "582b79774133302b640d4ce863241c5108cf91e5",
+        "revCount": 106,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Velasko/dotfiles"
@@ -374,11 +374,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1741196730,
-        "narHash": "sha256-0Sj6ZKjCpQMfWnN0NURqRCQn2ob7YtXTAOTwCuz7fkA=",
+        "lastModified": 1741332913,
+        "narHash": "sha256-ri1e8ZliWS3Jnp9yqpKApHaOo7KBN33W8ECAKA4teAQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "48913d8f9127ea6530a2a2f1bd4daa1b8685d8a3",
+        "rev": "20755fa05115c84be00b04690630cb38f0a203ad",
         "type": "github"
       },
       "original": {
