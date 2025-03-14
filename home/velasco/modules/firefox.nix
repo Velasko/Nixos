@@ -21,9 +21,6 @@
       DontCheckDefaultBrowser = false;
       DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "never"
       Homepage.StartPage = "previous-session";
-      SearchEngines = {
-        Default = "DuckDuckGo";
-        PreventInstalls = true;
       HttpsOOnlyMode = true;
       OfferToSaveLogins = false;
       Preferences = {
@@ -33,6 +30,7 @@
       };
       RequestedLocales = "en-US,pt-BR,fr";
       SearchBar = "unified"; # alternative: "separate"
+      SearchEngines = { Default = "DuckDuckGo"; Remove = [ "Google" "Bing" ]; PreventInstalls = true; };
       SearchSuggestEnabled = true;
       # about:support to get ids
       ExtensionSettings = {
