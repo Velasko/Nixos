@@ -6,7 +6,6 @@
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
-      OfferToSaveLogins = false;
       DNSOverHTTPS = {
         Enabled = true;
         ProviderURL = "https://doh.libredns.gr/noads";
@@ -26,6 +25,8 @@
       SearchEngines = {
         Default = "DuckDuckGo";
         PreventInstalls = true;
+      HttpsOOnlyMode = true;
+      OfferToSaveLogins = false;
       };
       SearchSuggestEnabled = true;
       # about:support to get ids
