@@ -30,9 +30,10 @@
       SearchSuggestEnabled = true;
       # about:support to get ids
       ExtensionSettings = {
+        "*".installation_mode = "blocked";
         # uBlock Origin
         "uBlock0@raymondhill.net" = {
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
         };
         # Dark Reader
@@ -42,18 +43,23 @@
         };
         # Bitwarden
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
         };
         # Simple Tab Groups
         "simple-tab-groups@drive4ik" = {
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/simple-tab-groups/latest.xpi";
         };
         # BetterTTV
         "firefox@betterttv.net" = {
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/betterttv/latest.xpi";
+        };
+        # Canvas Blocker
+        "CanvasBlocker@kkapsner.de" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4413485/canvasblocker-1.11.xpi";
         };
       };
     };
