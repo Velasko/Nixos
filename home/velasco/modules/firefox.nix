@@ -5,8 +5,13 @@
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
-      DNSOverHTTPS = true;
       OfferToSaveLogins = false;
+      DNSOverHTTPS = {
+        Enabled = true;
+        ProviderURL = "https://doh.libredns.gr/noads";
+        Locked = true;
+        Fallback = true;
+      };
       EnableTrackingProtection = {
         Value = true;
         Locked = true;
