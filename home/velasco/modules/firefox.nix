@@ -44,11 +44,6 @@
           installation_mode = "normal_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/simple-tab-groups/latest.xpi";
         };
-        # Enhancer for YouTube
-        "enhancerforyoutube@maximerf.addons.mozilla.org" = {
-          installation_mode = "normal_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhancer-for-youtube/latest.xpi";
-        };
         # BetterTTV
         "firefox@betterttv.net" = {
           installation_mode = "force_installed";
