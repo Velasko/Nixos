@@ -21,13 +21,18 @@
       DontCheckDefaultBrowser = false;
       DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "never"
       Homepage.StartPage = "previous-session";
-      SearchBar = "unified"; # alternative: "separate"
       SearchEngines = {
         Default = "DuckDuckGo";
         PreventInstalls = true;
       HttpsOOnlyMode = true;
       OfferToSaveLogins = false;
+      Preferences = {
+        "privacy.clearOnShutdown.history" = false;
+        "browser.urlbar.placeholderName" = "DuckDuckGo";
+        "browser.urlbar.placeholderName.private" = "DuckDuckGo";
       };
+      RequestedLocales = "en-US,pt-BR,fr";
+      SearchBar = "unified"; # alternative: "separate"
       SearchSuggestEnabled = true;
       # about:support to get ids
       ExtensionSettings = {
