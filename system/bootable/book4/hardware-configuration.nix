@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "rtsx_usb_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "mem_sleep_default=s2idle"
