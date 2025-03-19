@@ -27,6 +27,7 @@
         "privacy.clearOnShutdown.history" = false;
         "browser.urlbar.placeholderName" = "DuckDuckGo";
         "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+        "webgl.disabled" = false;
       };
       RequestedLocales = "en-US,pt-BR,fr";
       SearchBar = "unified"; # alternative: "separate"
