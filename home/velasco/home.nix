@@ -4,23 +4,28 @@
     ./modules/shell.nix
     ./modules/stylix.nix
     ./modules/programming.nix
+    ./modules/firefox.nix
     ./environments/${environment}.nix
   ];
 
-  programs.btop.enable = true;
-  programs.lazygit.enable = true;
+  programs = {
+    lazygit.enable = true;
+
+    # monitoring tools
+    btop.enable = true;
+    # iftop.enable = true; # networking
+    # iotop.enable = true; # disk
+    # csysdig.enable = true; # disk
+    # nvtop.enable = true; # gpu
+    # nvtopPackages.full.enable = true; # gpu
+  };
+
+
   home.packages = with pkgs; [
     curl
     gnutar
     gzip
     wget
   ];
-
-  programs.firefox = {
-    enable = true;
-    policies = {
-      DNSOverHTTPS = true;
-    };
-  };
 
 }
