@@ -11,6 +11,7 @@ in
     autojump
     direnv
     lazygit
+    lazydocker
     micro
     neovim
     tmux
