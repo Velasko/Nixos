@@ -3,7 +3,7 @@
   services.displayManager.sddm = {
     enable = false;
     autoNumlock = true;
-	wayland.enable = true;
+    wayland.enable = true;
   };
 
   programs.hyprland.enable = false;
