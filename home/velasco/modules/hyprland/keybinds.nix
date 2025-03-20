@@ -27,6 +27,6 @@
   "alt, tab, cyclenext, visible floating"
   # Application shortcuts
   "super, 1, exec, ${pkgs.alacritty}/bin/alacritty --class yazi -e ${pkgs.yazi}/bin/yazi"
-  "super, 2, exec, ${pkgs.firefox}/bin/firefox"
+  "super, 2, exec, ${pkgs.librewolf}/bin/librewolf"
 
 ]
