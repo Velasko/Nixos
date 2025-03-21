@@ -15,7 +15,7 @@
       listener = [
         {
           timeout = 300;
-          on-timeout = config.services.hypridle.settings.general.lock_cmd;
+          on-timeout = config.services.hypridle.settings.general.before_sleep_cmd;
         }
         {
           timeout = 330;
