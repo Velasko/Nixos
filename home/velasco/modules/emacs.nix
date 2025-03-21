@@ -1,11 +1,20 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  programs.emacs = {
+  services.emacs = {
     enable = true;
-    package = pkgs.emacs-nox;
-    extraPackages = epkgs: [ epkgs.dracula-theme ];
-    extraConfig = ''
-      (setq standard-indent 2)
-    '';
+    package = config.programs.emacs.package;
+	startWithUserSession = true;
   };
+
+	programs.emacs = {
+		enable = true;
+		package = pkgs.emacs-nox;
+		extraPackages = pkgs: [ pkgs.dracula-theme ];
+		extraConfig = ''
+			(custom-set-variables
+				'(xterm-mouse-mode t))
+				 '(cua-mode t)
+				 '(desktop-save-mode t)
+		'';
+	};
 }
