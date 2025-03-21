@@ -4,6 +4,10 @@ let
   pythonPkgs = pkgs.python312Packages;
 in
 {
+  imports = [
+    ./emacs.nix
+  ];
+
   programs.alacritty.enable = true;
 
   home.packages = with pkgs; [
