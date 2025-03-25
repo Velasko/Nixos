@@ -22,7 +22,14 @@
                 mountpoint = "/boot";
                 # mountOptions = [ "fmask=0077" "umask=0077" "defaults"];
               };
-
+            };
+            swap = {
+              size = "8G";
+              content = {
+                type = "swap";
+                randomEncryption = true;
+                resumeDevice = true;
+              };
             };
             zfs = {
               size = "100%";
