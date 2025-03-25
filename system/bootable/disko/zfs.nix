@@ -4,11 +4,11 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
-{ lib, ...}: {
+{ lib, ... }: {
   disko.devices = {
     disk = {
       main = {
-		device = lib.mkDefault "/dev/vda";
+        device = lib.mkDefault "/dev/vda";
         type = "disk";
         content = {
           type = "gpt";
@@ -20,8 +20,9 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-				# mountOptions = [ "fmask=022" "umask=0022" "defaults"];
+                # mountOptions = [ "fmask=0077" "umask=0077" "defaults"];
               };
+
             };
             zfs = {
               size = "100%";
