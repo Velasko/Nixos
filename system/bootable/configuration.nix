@@ -13,6 +13,7 @@ in
   imports = [
     ./${machine}/hardware-configuration.nix
     ./modules/display.nix
+    # ./modules/vpn/openvpn.nix
     (import ./modules/network.nix { machine = machine; username = username; })
     ./modules/audio.nix
     inputs.disko.nixosModules.disko
