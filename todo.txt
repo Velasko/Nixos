@@ -1,0 +1,76 @@
+Boot configuration criteria:
+- have secure boot
+- use systemd-boot
+- better machine detection than cpuinfo & machine-id file (commits to flake on every update).
+	- on bootstrap script, use /sys/class/dmi/id/product_uuid to detect machine. If no match, ask what to use.
+- SWAP
+  # https://techblog.dev/posts/2023/08/encrypted-swap-partition-support-hibernation-suspend-resume-linux/
+  # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate
+  # https://wiki.archlinux.org/title/Dm-crypt/Swap_encryption#With_suspend-to-disk_support
+	- detect machine ram size and allocate the same size
+	- enable hibernation
+	- encription
+	- lowest swappiness (wanted mostly for hibernation)
+- zfs
+  # https://haseebmajid.dev/posts/2024-02-04-how-to-create-a-custom-nixos-iso/
+  # https://wiki.archlinux.org/title/Install_Arch_Linux_on_ZFS
+  # https://wiki.archlinux.org/title/ZFS#PAM_module ?
+  # https://arstechnica.com/gadgets/2021/06/a-quick-start-guide-to-openzfs-native-encryption/
+	- be default on any physical installs (zfs can have issues when in vms)
+		- services.qemuGuest.enable
+	- auto detect volumes
+	- compression
+	- ciphers
+		- enable both passwd & usb key
+		- allow disable on install & per machine default
+	- /home
+		- cipher
+		- isolate
+		- redundancy (if 2+ volumes)
+		- versioning/copies/rollback
+	- /store
+		- isolate
+		- cipher/redundancy ?
+	- /
+		- isolate/cipher/redundancy ?
+	- /data
+		- should contain:
+			- games
+			- downloads
+			- media
+			- ?
+	- Ensure disk failure boot resiliency
+		- how ?
+	- Enable Trim
+	- SSD cashing ??
+	- Monitoring/notification
+
+Minimal Config pkgs:
+- librewolf
+- text editor (emacs, in the future)
+- git
+- terminal (and config: zsh, tmux, etc)
+- nmtui
+- yazi ?
+- hypr ?
+
+Nice to have:
+- Bootstrap options:
+	- static iso
+	- github pull
+	- live usb
+		- ramdisk
+		- have both data and iso partitions/folders for ventoy support.
+- no idle while installing
+- ssh conection
+- handle VM configurations
+- not fail with not much ram
+- kernel lockdown # https://wiki.archlinux.org/title/Security#Kernel_lockdown_mode
+
+Questions:
+- how prompt passwords & bootstrap key management ?
+
+Future changes:
+- Drop wsl support
+- Change from nvim to emacs
+- tmux resume process & file editing
