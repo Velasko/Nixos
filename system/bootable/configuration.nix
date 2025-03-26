@@ -29,7 +29,7 @@ in
       "/dev/sda"
   ;
 
-  fileSystems."/boot".options = [ "fmask=022" "umask=0022" "defaults" ];
+  fileSystems."/boot".options = [ "fmask=0022" "umask=0022" "defaults" ];
 
   boot = {
     supportedFilesystems = [ "zfs" ];
