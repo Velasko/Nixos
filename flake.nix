@@ -61,7 +61,13 @@
           };
         in
         foldl (a: b: a // b)
-          { }
+          {
+            iso = nixpkgs.lib.nixosSystem {
+              modules = [
+                ./system/iso.nix
+              ];
+            };
+          }
           (
             forEach environments configure
           );
