@@ -19,19 +19,12 @@
       flake = false;
       url = "https://github.com/velasko.keys";
     };
-    machine-id-file = {
-      flake = false;
-      url = "path:/etc/machine-id";
-    };
-    cpu-info = {
-      flake = false;
-      url = "path:/proc/cpuinfo";
-    };
   };
 
   outputs = { nixpkgs, home-manager, stylix, ... } @inputs:
     let
       inherit (nixpkgs.lib.lists) foldl forEach;
+      inherit (nixpkgs.lib.attrsets) cartesianProduct;
 
       pkgs = import nixpkgs {
         config.allowUnfree = true;
@@ -40,25 +33,30 @@
 
       platform = pkgs.config.nixpkgs.hostPlatform;
       environments = [ "main" "minimal" "work" ];
-      machines = {
-        id_4045046c63ab4f52b55f73688d192041 = "book4";
-        id_db8e3934eee544689f3e2460bef7a0d8 = "zfs-virtualized";
-      };
+      machines = [
+        "book4"
+        # "zfs-virtualized"
+      ];
 
       username = "velasco";
     in
     {
       nixosConfigurations =
         let
-          configure = environment: {
-            "${environment}" = nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs stylix username environment machines; };
-              modules = [
-                ./system/main.nix
-                ./home/base.nix
-              ];
+          configure = sys_config:
+            let
+              machine = sys_config.a;
+              environment = sys_config.b;
+            in
+            {
+              "${machine}.${environment}" = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit inputs stylix username environment machine; };
+                modules = [
+                  ./system/main.nix
+                  ./home/base.nix
+                ];
+              };
             };
-          };
         in
         foldl (a: b: a // b)
           {
@@ -69,7 +67,7 @@
             };
           }
           (
-            forEach environments configure
+            forEach (cartesianProduct { a = machines; b = environments; }) configure
           );
     };
 }

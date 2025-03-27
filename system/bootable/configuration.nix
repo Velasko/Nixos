@@ -1,13 +1,9 @@
-{ pkgs, inputs, config, lib, machines, username, environment, virtualized, ... }:
+{ pkgs, inputs, config, lib, machine, username, environment, virtualized, ... }:
 let
   inherit (lib.strings) concatStrings splitString hasInfix;
-  virtualized = hasInfix "hypervisor" (builtins.readFile inputs.cpu-info);
-  machine-id = concatStrings (splitString "\n" (builtins.readFile inputs.machine-id-file));
-
-  machine = (machines."id_${machine-id}" or "unknown");
+  virtualized = false;
 
   disk-type = if ! virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
-
 in
 {
   imports = [

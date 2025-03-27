@@ -67,19 +67,6 @@
         "type": "github"
       }
     },
-    "cpu-info": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742425415,
-        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
-        "path": "/proc/cpuinfo",
-        "type": "path"
-      },
-      "original": {
-        "path": "/proc/cpuinfo",
-        "type": "path"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -323,19 +310,6 @@
         "type": "github"
       }
     },
-    "machine-id-file": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1725989769,
-        "narHash": "sha256-+byoNUhKNQdGWaUqKJ1kbamIxHWJLF6h1nYTMB7WKjs=",
-        "path": "/etc/machine-id",
-        "type": "path"
-      },
-      "original": {
-        "path": "/etc/machine-id",
-        "type": "path"
-      }
-    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -406,12 +380,10 @@
     },
     "root": {
       "inputs": {
-        "cpu-info": "cpu-info",
         "disko": "disko",
         "dotfiles": "dotfiles",
         "github-keys": "github-keys",
         "home-manager": "home-manager",
-        "machine-id-file": "machine-id-file",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "stylix": "stylix"
