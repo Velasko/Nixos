@@ -23,22 +23,28 @@
 
   outputs = { nixpkgs, home-manager, stylix, ... } @inputs:
     let
+      inherit (builtins) readDir;
+      inherit (nixpkgs.lib.attrsets) cartesianProduct filterAttrs mapAttrsToList;
       inherit (nixpkgs.lib.lists) foldl forEach;
-      inherit (nixpkgs.lib.attrsets) cartesianProduct;
+      inherit (nixpkgs.lib.strings) removeSuffix;
 
       pkgs = import nixpkgs {
         config.allowUnfree = true;
         inherit platform;
       };
 
+      username = "velasco";
       platform = pkgs.config.nixpkgs.hostPlatform;
-      environments = [ "main" "minimal" "work" ];
+      environments = mapAttrsToList (name: value: removeSuffix ".nix" name)
+        (filterAttrs
+          (n: v: v == "regular")
+          (readDir ./home/${username}/environments)
+        );
       machines = [
         "book4"
         # "zfs-virtualized"
       ];
 
-      username = "velasco";
     in
     {
       nixosConfigurations =
