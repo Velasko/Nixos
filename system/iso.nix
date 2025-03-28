@@ -33,7 +33,7 @@
   };
 
   networking = {
-    hostName = "iso";
+    hostName = "velasco-nixiso";
   };
 
   # gnome power settings do not turn off screen
