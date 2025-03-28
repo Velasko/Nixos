@@ -15,15 +15,6 @@ in
   ];
 
   disko.enableConfig = true;
-  disko.devices.disk.main.device =
-    if virtualized then
-      "/dev/vda"
-    else if lib.builtins.elem "nvme" config.boot.initrd.availableKernelModules then
-      "/dev/nvme0n1"
-    else
-      "/dev/sda"
-  ;
-
   fileSystems."/boot".options = [ "fmask=0022" "umask=0022" "defaults" ];
 
   boot = {

@@ -8,7 +8,12 @@
   disko.devices = {
     disk = {
       main = {
-        device = lib.mkDefault "/dev/vda";
+        device =
+          if lib.builtins.elem "nvme" config.boot.initrd.availableKernelModules then
+            "/dev/nvme0n1"
+          else
+            "/dev/sda"
+        ;
         type = "disk";
         content = {
           type = "gpt";
