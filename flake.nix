@@ -42,7 +42,7 @@
           (readDir ./home/${username}/environments)
         );
 
-      machines = mapAttrsToList (name: value: removeSuffix ".nix" name)
+      machines = mapAttrsToList (name: value: name)
         (filterAttrs
           (n: v: v == "directory")
           (readDir ./system/machines)
