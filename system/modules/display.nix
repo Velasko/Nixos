@@ -1,7 +1,7 @@
-{ username, pkgs, ... }: {
+{ pkgs, environment, username, ... }: {
   imports = [
-	./kde.nix
-	./greeter.nix
+    ./kde.nix
+    ./greeter.nix
   ];
 
   services.displayManager.autoLogin.user = "${username}";
@@ -36,7 +36,7 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware.graphics.enable = true;
+  hardware.graphics.enable = environment != "minimal";
 
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
