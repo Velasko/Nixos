@@ -7,11 +7,11 @@ let
 in
 {
   imports = [
+    inputs.disko.nixosModules.disko
     ./modules/display.nix
     ./modules/network.nix
     ./modules/audio.nix
-    inputs.disko.nixosModules.disko
-    ./modules/disko/${disk-type}.nix
+    ./modules/disko/zfs.nix
   ];
 
   disko.enableConfig = true;

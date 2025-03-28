@@ -4,8 +4,8 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
-{ lib, ... }: {
-  disko.devices = {
+{ config, lib, ... }: {
+  disko.devices = lib.mkDefault {
     disk = {
       main = {
         device =

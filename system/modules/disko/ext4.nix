@@ -5,12 +5,12 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
-{lib, ...}: {
-  disko.devices = {
+{ lib, ... }: {
+  disko.devices = lib.mkForce {
     disk = {
       main = {
         type = "disk";
-		device = lib.mkDefault "/dev/vda";
+        device = lib.mkDefault "/dev/vda";
         content = {
           type = "gpt";
           partitions = {
