@@ -35,16 +35,18 @@
 
       username = "velasco";
       platform = pkgs.config.nixpkgs.hostPlatform;
+
       environments = mapAttrsToList (name: value: removeSuffix ".nix" name)
         (filterAttrs
           (n: v: v == "regular")
           (readDir ./home/${username}/environments)
         );
-      machines = [
-        "book4"
-        # "zfs-virtualized"
-      ];
 
+      machines = mapAttrsToList (name: value: removeSuffix ".nix" name)
+        (filterAttrs
+          (n: v: v == "directory")
+          (readDir ./system/machines)
+        );
     in
     {
       nixosConfigurations =
