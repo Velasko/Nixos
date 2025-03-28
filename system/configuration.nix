@@ -7,12 +7,11 @@ let
 in
 {
   imports = [
-    ./${machine}/hardware-configuration.nix
     ./modules/display.nix
     (import ./modules/network.nix { machine = machine; username = username; })
     ./modules/audio.nix
     inputs.disko.nixosModules.disko
-    ./disko/${disk-type}.nix
+    ./modules/disko/${disk-type}.nix
   ];
 
   disko.enableConfig = true;
