@@ -33,5 +33,5 @@
   };
 
   programs.dconf.enable = true;
-  programs.steam.enable = environment != "work";
+  programs.steam.enable = environment == "main";
 }

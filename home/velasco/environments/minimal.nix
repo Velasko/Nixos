@@ -1,4 +1,2 @@
-{ ... }: {
-  imports = [ ../modules/hyprland ];
-}
+{ ... }: { }
 

@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ../modules/hyprland ];
+  imports = [ ./graphical.nix ];
 
   home.packages = with pkgs; [
     bitwarden-desktop
