@@ -8,7 +8,7 @@ in
 {
   imports = [
     ./modules/display.nix
-    (import ./modules/network.nix { machine = machine; username = username; })
+    ./modules/network.nix
     ./modules/audio.nix
     inputs.disko.nixosModules.disko
     ./modules/disko/${disk-type}.nix
