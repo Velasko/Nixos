@@ -58,6 +58,11 @@
     openssh.authorizedKeys.keyFiles = [ inputs.github-keys.outPath ];
   };
 
+  systemd.services."getty@tty1" = {
+    overrideStrategy = "asDropin";
+    serviceConfig.ExecStart = [ "" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ${username} --noclear --keep-baud %I 115200,38400,9600 $TERM" ];
+  };
+
   environment.systemPackages = with pkgs; [
     git
     gum
