@@ -60,7 +60,7 @@
     serviceConfig.ExecStart = [ "" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ${username} --noclear --keep-baud %I 115200,38400,9600 $TERM" ];
   };
 
-  environment.etc."issue.d/ip.issue".text = "\\4\n";
+  environment.etc."issue.d/ip.issue".text = "eth0: \\4{eth0}\nenp1s0: \\4{enp1s0}\n";
   networking.dhcpcd.runHook = "${pkgs.utillinux}/bin/agetty --reload";
 
   environment.systemPackages = with pkgs; [
