@@ -3,6 +3,7 @@
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     ../home/base.nix
+    ./common.nix
   ];
 
   nixpkgs = {
@@ -48,14 +49,11 @@
     };
   };
 
+  users.extraUsers.root.password = "nixos";
   programs.zsh.enable = true;
 
-  users.extraUsers.root.password = "nixos";
   home-manager.users."${username}".home.homeDirectory = lib.mkForce "/home/${username}";
-  users.users."${username}" = {
-    isNormalUser = true;
-    openssh.authorizedKeys.keyFiles = [ inputs.github-keys.outPath ];
-  };
+  users.users."${username}".shell = pkgs.bash;
 
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";
