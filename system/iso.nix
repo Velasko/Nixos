@@ -47,7 +47,17 @@
     };
   };
 
-  # home-manager.users.velasco = imports [ ../home/base.nix ];
   users.extraUsers.root.password = "nixos";
-}
 
+  environment.systemPackages = with pkgs; [
+    git
+    gum
+    (
+      writeShellScriptBin "nix_installer"
+        ''
+          	 #!/usr/bin/env bash
+          	 git clone https://github.com/velasko/nixos $HOME/nixos
+        ''
+    )
+  ];
+}
