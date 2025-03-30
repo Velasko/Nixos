@@ -38,7 +38,7 @@ USER=(cat $REPO_PATH/flake.nix | grep "username = " | sed -E "s/username = (.*);
 
 gum confirm --default=false "This process will erase the data on ALL discs. Do you want to continue ?"
 
-
+# && are used so the chain of commands is interrupted
 sudo nix run github:nix-community/disko \
     --extra-experimental-features "nix-command flakes" \
 	--no-write-lock-file \
@@ -53,5 +53,5 @@ sudo nixos-install \
 	--flake "$REPO_PATH#$MACHINE.main" \
 	--root /mnt \
 && \
-sudo nixos-enter --root /mnt -c 'passwd velasco'
+sudo nixos-enter --root /mnt -c 'passwd ${USER}'
 
