@@ -1,9 +1,6 @@
-{ pkgs, inputs, config, lib, machine, username, environment, virtualized, ... }:
+{ pkgs, inputs, config, lib, machine, username, environment, ... }:
 let
   inherit (lib.strings) concatStrings splitString hasInfix;
-  virtualized = false;
-
-  disk-type = if ! virtualized || machine == "zfs-virtualized" then "zfs" else "ext4";
 in
 {
   imports = [
