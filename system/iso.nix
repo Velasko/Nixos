@@ -53,7 +53,6 @@
   users.extraUsers.root.password = "nixos";
   home-manager.users."${username}".home.homeDirectory = lib.mkForce "/home/${username}";
   users.users."${username}" = {
-    shell = pkgs.zsh;
     isNormalUser = true;
     openssh.authorizedKeys.keyFiles = [ inputs.github-keys.outPath ];
   };
