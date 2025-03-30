@@ -30,26 +30,28 @@ if [[ $MACHINE == "unknown" ]]; then
 fi
 
 DISK="zfs"
-if [[ $(cat $REPO_PATH/system/machines/${MACHINE}/hardware-configuration.nix | grep ext4.nix | wc -l) -tg 0 ]]; then
+if [[ $(cat $REPO_PATH/system/machines/${MACHINE}/hardware-configuration.nix | grep ext4.nix | wc -l) -gt 0 ]]; then
 	DISK="ext4"
 fi
+
+USER=(cat $REPO_PATH/flake.nix | grep "username = " | sed -E "s/username = (.*);/\1/"))
 
 gum confirm --default=false "This process will erase the data on ALL discs. Do you want to continue ?"
 
 
-# sudo nix run github:nix-community/disko \
-#     --extra-experimental-features "nix-command flakes" \
-# 	--no-write-lock-file \
-# 	-- \
-# 	--mode zap_create_mount \
-# 	"$REPO_PATH/system/modules/disko/$DISK.nix"
+sudo nix run github:nix-community/disko \
+    --extra-experimental-features "nix-command flakes" \
+	--no-write-lock-file \
+	-- \
+	--mode zap_create_mount \
+	"$REPO_PATH/system/modules/disko/$DISK.nix" \
+&& \
+sudo nixos-install \
+	--no-root-passwd \
+	--no-channel-copy \
+	--no-write-lock-file \
+	--flake "$REPO_PATH#$MACHINE.main" \
+	--root /mnt \
+&& \
+sudo nixos-enter --root /mnt -c 'passwd velasco'
 
-echo "$REPO_PATH/system/modules/disko/$DISK.nix"
-
-echo "$REPO_PATH#$MACHINE.main"
-# sudo nixos-install \
-# 	--no-root-passwd \
-# 	--no-channel-copy \
-# 	--no-write-lock-file \
-# 	--flake "$REPO_PATH#$MACHINE.main" \
-# 	--root /mnt
