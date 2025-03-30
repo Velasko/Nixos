@@ -55,6 +55,7 @@
   users.users."${username}" = {
     shell = pkgs.zsh;
     isNormalUser = true;
+    openssh.authorizedKeys.keyFiles = [ inputs.github-keys.outPath ];
   };
 
   environment.systemPackages = with pkgs; [
