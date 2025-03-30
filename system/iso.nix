@@ -1,7 +1,8 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, pkgs, inputs, lib, modulesPath, username, ... }:
 {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    ../home/base.nix
   ];
 
   nixpkgs = {
@@ -48,6 +49,10 @@
   };
 
   users.extraUsers.root.password = "nixos";
+  home-manager.users."${username}".home.homeDirectory = lib.mkForce "/home/${username}";
+  users.users."${username}" = {
+    isNormalUser = true;
+  };
 
   environment.systemPackages = with pkgs; [
     git
