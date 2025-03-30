@@ -53,7 +53,7 @@
   programs.zsh.enable = true;
 
   home-manager.users."${username}".home.homeDirectory = lib.mkForce "/home/${username}";
-  users.users."${username}".shell = pkgs.bash;
+  users.users."${username}".shell = lib.mkForce pkgs.bash;
 
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";
