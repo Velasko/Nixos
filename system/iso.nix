@@ -79,9 +79,7 @@ nmtui
   environment.systemPackages = with pkgs; [
     git
     gum
-    (
-      writeShellScriptBin "nix_installer" ./scripts/installer.sh
-    )
     networkmanager
+    (writeShellScriptBin "nix_installer" ./scripts/installer.sh)
   ];
 }
