@@ -67,11 +67,7 @@
     git
     gum
     (
-      writeShellScriptBin "nix_installer"
-        ''
-          	 #!/usr/bin/env bash
-          	 git clone https://github.com/velasko/nixos $HOME/nixos
-        ''
+      writeShellScriptBin "nix_installer" ./scripts/installer.sh
     )
   ];
 }
