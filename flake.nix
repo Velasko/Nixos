@@ -68,11 +68,17 @@
         in
         foldl (a: b: a // b)
           {
-            iso = nixpkgs.lib.nixosSystem {
-              modules = [
-                ./system/iso.nix
-              ];
-            };
+            iso =
+              let
+                machine = "unknown";
+                environment = "minimal";
+              in
+              nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit inputs stylix username environment machine; };
+                modules = [
+                  ./system/iso.nix
+                ];
+              };
           }
           (
             forEach (cartesianProduct { a = machines; b = environments; }) configure
