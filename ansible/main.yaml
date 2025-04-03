@@ -15,4 +15,21 @@
       cmd: /tmp/nix_install.sh --no-daemon
       creates: /nix
 
+  - name: Adding home-manager channel
+    ansible.builtin.blockinfile:
+      path: ~/.nix-channels
+      block: |
+        https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 
+  - name: Updating channels
+    ansible.builtin.command:
+      cmd: nix-channel --update
+    changed_when: false
+
+  - name: Bootstraping home-manager
+    ansible.builtin.command:
+      cmd: nix-shell '<home-manager>' -A install
+      creates: "/home/{{ ansible_user_id }}/.config/home-manager/home.nix"
+    register: hm_install
+
+  - debug: var=hm_install
