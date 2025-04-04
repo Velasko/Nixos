@@ -3,33 +3,47 @@
   hosts: localhost
   connection: local
   tasks:
-  - name: Script downloading
-    ansible.builtin.get_url:
-      url: https://nixos.org/nix/install
-      dest: /tmp/nix_install.sh
-      mode: '0700'
-    changed_when: false
+    # Check for:
+    # - modules requirements
+    #   - get_url -> wget ?
+    #   - git ?
+    # - repo is cloned
+    # - no gtk files
+    #     - .gtkrc-2.0
+    #     - .config/gtk-*
+    - name: Script downloading
+      ansible.builtin.get_url:
+        url: https://nixos.org/nix/install
+        dest: /tmp/nix_install.sh
+        mode: "0700"
+      changed_when: false
 
-  - name: Executing script
-    ansible.builtin.command:
-      cmd: /tmp/nix_install.sh --no-daemon
-      creates: /nix
+    - name: Executing script
+      ansible.builtin.command:
+        cmd: /tmp/nix_install.sh --no-daemon
+        creates: /nix
 
-  - name: Adding home-manager channel
-    ansible.builtin.blockinfile:
-      path: ~/.nix-channels
-      block: |
-        https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    - name: Adding home-manager channel
+      ansible.builtin.blockinfile:
+        path: ~/.nix-channels
+        block: |
+          https://nixos.org/channels/nixos-24.11 nixpkgs
+          https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz home-manager
 
-  - name: Updating channels
-    ansible.builtin.command:
-      cmd: nix-channel --update
-    changed_when: false
+    - name: Updating channels
+      ansible.builtin.command:
+        cmd: nix-channel --update
+      changed_when: false
 
-  - name: Bootstraping home-manager
-    ansible.builtin.command:
-      cmd: nix-shell '<home-manager>' -A install
-      creates: "/home/{{ ansible_user_id }}/.config/home-manager/home.nix"
-    register: hm_install
+    - name: Bootstraping home-manager
+      ansible.builtin.command:
+        # cmd: nix-shell '<home-manager>' -A install
+        argv:
+          - nix
+          - --extra-experimental-features "nix-command flakes
+          - run home-manager/release-24.11 -- init --switch
+        creates: "/home/{{ ansible_user_id }}/.nix-profile/bin/home-manager"
+      register: hm_install
 
-  - debug: var=hm_install
+    # - debug: var=hm_install
+    -

@@ -28,13 +28,13 @@
       inherit (nixpkgs.lib.lists) foldl forEach;
       inherit (nixpkgs.lib.strings) removeSuffix;
 
+      username = "velasco";
+      platform = pkgs.config.nixpkgs.hostPlatform;
+
       pkgs = import nixpkgs {
         config.allowUnfree = true;
         inherit platform;
       };
-
-      username = "velasco";
-      platform = pkgs.config.nixpkgs.hostPlatform;
 
       environments = mapAttrsToList (name: value: removeSuffix ".nix" name)
         (filterAttrs
@@ -83,6 +83,31 @@
           (
             forEach (cartesianProduct { a = machines; b = environments; }) configure
           );
+
+      homeConfigurations =
+        let
+          machine = "home-manager";
+          environment = "minimal";
+        in
+        {
+          "${machine}.${environment}" = inputs.home-manager.lib.homeManagerConfiguration {
+            extraSpecialArgs = { inherit inputs stylix username environment machine; };
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            modules = [
+              stylix.homeManagerModules.stylix
+              ./home/velasco/home.nix
+              {
+                home = {
+                  username = "velasco";
+                  homeDirectory = "/home/velasco";
+                  stateVersion = "24.11";
+                };
+                gtk.enable = nixpkgs.lib.mkForce false;
+                programs.home-manager.enable = true;
+              }
+            ];
+          };
+        };
     };
 }
 
