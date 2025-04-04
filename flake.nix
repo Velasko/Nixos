@@ -87,7 +87,7 @@
       homeConfigurations =
         let
           machine = "home-manager";
-          environment = "minimal";
+          environment = "main";
         in
         {
           "${machine}.${environment}" = inputs.home-manager.lib.homeManagerConfiguration {
