@@ -15,7 +15,7 @@ in
       please = "sudo";
       nix-update = "(cd ${config_path} && nix flake update --commit-lock-file)";
       nix-rebuild = "sudo nixos-rebuild --flake ${config_path}#${machine}.${environment}";
-      nix-clean = "nix-store --gc && nix-collect-garbage --delete-old && sudo nix-collect-garbage -d rm -rf ~/.cache/nix";
+      nix-clean = "nix-store --gc && nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && rm -rf ~/.cache/nix";
       nix-iso = "nix run nixpkgs#nixos-generators -- --format iso --flake ~/Nixos#iso -o ~/result";
     };
 
