@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  # Check about:policies
   programs.firefox = {
     enable = true;
     package = pkgs.librewolf;
