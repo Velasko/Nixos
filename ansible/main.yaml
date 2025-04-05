@@ -85,9 +85,13 @@
     - name: bootstrap home-manager
       ansible.builtin.shell:
         cmd: |
-          . /home/velasco/.nix-profile/etc/profile.d/nix.sh
+          . ~/.nix-profile/etc/profile.d/nix.sh
           nix --extra-experimental-features "nix-command flakes" run home-manager/release-24.11 -- init --switch
         creates: "~/.nix-profile/bin/home-manager"
       register: hm_install
 
-    # - debug: var=hm_install
+    - name: apply latest config
+      ansible.builtin.shell:
+        cmd: |
+          . ~/.nix-profile/etc/profile.d/nix.sh
+          home-manager --extra-experimental-features "nix-command flakes" switch --flake ~/Nixos#home-manager.main --impure
