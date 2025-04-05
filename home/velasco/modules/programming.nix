@@ -41,7 +41,7 @@ in
     gcc
     nodejs_22
     ripgrep # telescope dependency for file searching
-    luarocks # nvim lazy dependency
+    luajitPackages.luarocks_bootstrap # nvim lazy dependency
   ];
 
   home.sessionVariables = {
