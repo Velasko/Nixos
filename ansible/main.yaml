@@ -10,11 +10,6 @@
         cache_valid_time: 86400
       become: true
   tasks:
-    # Check for:
-    # - modules requirements
-    #   - get_url -> wget ?
-    #   - git ?
-    # - repo is cloned
     - name: install common programs.
       package:
         name:
