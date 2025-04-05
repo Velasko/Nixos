@@ -30,9 +30,6 @@
         force: true
         single_branch: true
 
-    # - no gtk files
-    #     - .gtkrc-2.0
-    #     - .config/gtk-*
     - name: script downloading
       ansible.builtin.get_url:
         url: https://nixos.org/nix/install
@@ -73,6 +70,17 @@
       ansible.builtin.command:
         cmd: ~/.nix-profile/bin/nix-channel --update
       changed_when: false
+
+    - name: clean up gtk files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - ~/.gtkrc-2.0
+        - ~/.config/gtkrc
+        - ~/.config/gtkrc-2.0
+        - ~/.config/gtk-3.0/
+        - ~/.config/gtk-4.0/
 
     - name: bootstraping home-manager
       ansible.builtin.command:
