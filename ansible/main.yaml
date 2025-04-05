@@ -49,7 +49,7 @@
     - name: executing script
       ansible.builtin.command:
         cmd: /tmp/nix_install.sh --no-daemon
-        # creates: /nix
+        creates: /nix/store
 
     - name: adding home-manager channel
       ansible.builtin.lineinfile:
