@@ -2,6 +2,13 @@
 # ansible-playbook ./main.yaml -i localhost, --ask-become
 - name: bootstrap nix environment.
   hosts: all
+  pre_tasks:
+    - name: update installer cache if needed.
+      package:
+        upgrade: yes
+        update_cache: true
+        cache_valid_time: 86400
+      become: true
   tasks:
     # Check for:
     # - modules requirements
