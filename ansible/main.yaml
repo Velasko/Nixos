@@ -67,7 +67,7 @@
 
     - name: updating channels
       ansible.builtin.command:
-        cmd: nix-channel --update
+        cmd: ~/.nix-profile/bin/nix-channel --update
       changed_when: false
 
     - name: bootstraping home-manager
@@ -77,7 +77,7 @@
           - nix
           - --extra-experimental-features "nix-command flakes
           - run home-manager/release-24.11 -- init --switch
-        creates: "/home/{{ ansible_user_id }}/.nix-profile/bin/home-manager"
+        creates: "~/.nix-profile/bin/home-manager"
       register: hm_install
 
     # - debug: var=hm_install
