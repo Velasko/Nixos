@@ -21,6 +21,20 @@
           - git
       become: true
 
+    - name: get git branch
+      local_action: ansible.builtin.command git rev-parse --abbrev-ref HEAD
+      run_once: true
+      register: branch_name
+      changed_when: false
+
+    - name: clone nixos repo.
+      ansible.builtin.git:
+        repo: https://github.com/Velasko/Nixos
+        dest: ~/Nixos
+        version: "{{ branch_name.stdout }}"
+        force: true
+        single_branch: true
+
     # - no gtk files
     #     - .gtkrc-2.0
     #     - .config/gtk-*
