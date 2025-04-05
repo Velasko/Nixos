@@ -40,10 +40,19 @@
         mode: "0700"
       changed_when: false
 
+    - name: create /nix
+      ansible.builtin.file:
+        path: /nix
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: "0755"
+        state: directory
+      become: true
+
     - name: executing script
       ansible.builtin.command:
         cmd: /tmp/nix_install.sh --no-daemon
-        creates: /nix
+        # creates: /nix
 
     - name: adding home-manager channel
       ansible.builtin.blockinfile:
