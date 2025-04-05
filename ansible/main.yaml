@@ -18,31 +18,31 @@
     # - no gtk files
     #     - .gtkrc-2.0
     #     - .config/gtk-*
-    - name: Script downloading
+    - name: script downloading
       ansible.builtin.get_url:
         url: https://nixos.org/nix/install
         dest: /tmp/nix_install.sh
         mode: "0700"
       changed_when: false
 
-    - name: Executing script
+    - name: executing script
       ansible.builtin.command:
         cmd: /tmp/nix_install.sh --no-daemon
         creates: /nix
 
-    - name: Adding home-manager channel
+    - name: adding home-manager channel
       ansible.builtin.blockinfile:
         path: ~/.nix-channels
         block: |
           https://nixos.org/channels/nixos-24.11 nixpkgs
           https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz home-manager
 
-    - name: Updating channels
+    - name: updating channels
       ansible.builtin.command:
         cmd: nix-channel --update
       changed_when: false
 
-    - name: Bootstraping home-manager
+    - name: bootstraping home-manager
       ansible.builtin.command:
         # cmd: nix-shell '<home-manager>' -A install
         argv:
@@ -53,4 +53,3 @@
       register: hm_install
 
     # - debug: var=hm_install
-    -
