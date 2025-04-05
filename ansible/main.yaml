@@ -53,9 +53,17 @@
     - name: adding home-manager channel
       ansible.builtin.blockinfile:
         path: ~/.nix-channels
+        create: true
         block: |
           https://nixos.org/channels/nixos-24.11 nixpkgs
           https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz home-manager
+
+    - name: nix allowUnfree
+      ansible.builtin.blockinfile:
+        path: ~/.config/nixpkgs/config.nix
+        create: true
+        block: |
+          { allowUnfree = true; }"
 
     - name: updating channels
       ansible.builtin.command:
