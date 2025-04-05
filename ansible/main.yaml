@@ -83,12 +83,10 @@
         - ~/.config/gtk-4.0/
 
     - name: bootstraping home-manager
-      ansible.builtin.command:
-        # cmd: nix-shell '<home-manager>' -A install
-        argv:
-          - nix
-          - --extra-experimental-features "nix-command flakes
-          - run home-manager/release-24.11 -- init --switch
+      ansible.builtin.shell:
+        cmd: |
+          . /home/velasco/.nix-profile/etc/profile.d/nix.sh
+          nix --extra-experimental-features "nix-command flakes" run home-manager/release-24.11 -- init --switch
         creates: "~/.nix-profile/bin/home-manager"
       register: hm_install
 
