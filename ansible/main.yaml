@@ -22,7 +22,7 @@
       register: branch_name
       changed_when: false
 
-    - name: clone nixos repo.
+    - name: clone nixos repo
       ansible.builtin.git:
         repo: https://github.com/Velasko/Nixos
         dest: ~/Nixos
@@ -82,7 +82,7 @@
         - ~/.config/gtk-3.0/
         - ~/.config/gtk-4.0/
 
-    - name: bootstraping home-manager
+    - name: bootstrap home-manager
       ansible.builtin.shell:
         cmd: |
           . /home/velasco/.nix-profile/etc/profile.d/nix.sh
