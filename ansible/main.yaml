@@ -1,7 +1,7 @@
 ---
-- name: Bootstraping nix environment
-  hosts: localhost
-  connection: local
+# ansible-playbook ./main.yaml -i localhost, --ask-become
+- name: bootstrap nix environment.
+  hosts: all
   tasks:
     # Check for:
     # - modules requirements
