@@ -25,6 +25,7 @@
       HttpsOOnlyMode = true;
       OfferToSaveLogins = false;
       Preferences = {
+		"places.history.enabled" = true;
         "privacy.clearOnShutdown.history" = false;
         "browser.urlbar.placeholderName" = "DuckDuckGo";
         "browser.urlbar.placeholderName.private" = "DuckDuckGo";
